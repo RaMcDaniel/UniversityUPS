@@ -7,46 +7,46 @@ class HashTable(object):
         self.key_buckets = [None] * self.table_size
         self.data_buckets = [None] * self.table_size
 
-    def put(self, key, data):
+    def put(self, package_id, package_data):
 
-        hash_value = self.hash_function(key, len(self.key_buckets))
+        hash_value = self.hash_function(package_id, len(self.key_buckets))
 
         if self.key_buckets[hash_value] is None:
-            self.key_buckets[hash_value] = key
-            self.data_buckets[hash_value] = data
+            self.key_buckets[hash_value] = package_id
+            self.data_buckets[hash_value] = package_data
 
         else:
 
-            if self.key_buckets[hash_value] == key:
-                self.data_buckets[hash_value] = data
+            if self.key_buckets[hash_value] == package_id:
+                self.data_buckets[hash_value] = package_data
 
             else:
 
-                next_slot = self.rehash(hash_value, len(self.key_buckets))
+                next_bucket = self.hash_again(hash_value, len(self.key_buckets))
 
-                while self.key_buckets[next_slot] is not None and self.key_buckets[next_slot] != key:
-                    next_slot = self.rehash(next_slot, len(self.key_buckets))
+                while self.key_buckets[next_bucket] is not None and self.key_buckets[next_bucket] != package_id:
+                    next_bucket = self.hash_again(next_bucket, len(self.key_buckets))
 
-                if self.key_buckets[next_slot] is None:
-                    self.key_buckets[next_slot] = key
-                    self.data_buckets[next_slot] = data
+                if self.key_buckets[next_bucket] is None:
+                    self.key_buckets[next_bucket] = package_id
+                    self.data_buckets[next_bucket] = package_data
 
                 else:
-                    self.data_buckets[next_slot] = data
+                    self.data_buckets[next_bucket] = package_data
 
-    def hash_function(self, key, size):
+    def hash_function(self, key_package_id, table_size):
         # simple remainder method modulo hash function
-        return key % size
+        return key_package_id % table_size
 
-    def rehash(self, old_hash, size):
-        return (old_hash + 1) % size
+    def hash_again(self, previous_hash, size):
+        return (previous_hash + 1) % size
 
     def get(self, key):
-        start_slot = self.hash_function(key, len(self.key_buckets))
+        start_bucket = self.hash_function(key, len(self.key_buckets))
         data = None
         stop = False
         found = False
-        position = start_slot
+        position = start_bucket
 
         while self.key_buckets[position] is not None and not found and not stop:
 
@@ -55,14 +55,19 @@ class HashTable(object):
                 data = self.data_buckets[position]
 
             else:
-                position = self.rehash(position, len(self.key_buckets))
-                if position == start_slot:
+                position = self.hash_again(position, len(self.key_buckets))
+                if position == start_bucket:
                     stop == True
+        print(data)
         return data
 
 
 h = HashTable(5)
 print(h)
 
-HashTable.put()
+h.put(1, ["wer", "wef", "sdtgg"])
+h.put(2, ["wer", "wef", "sdtgg", "sdfs"])
+h.get(2)
+
+
 

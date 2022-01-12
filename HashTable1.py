@@ -62,12 +62,7 @@ class HashTable(object):
 
 
 h = HashTable(5)
+print(h)
 
-h[1] = "one"
-h[2] = "two"
-h[3] = "three"
-h[4] = "four"
-h[5] = "five"
-
-print(h[3])
+HashTable.put()
 

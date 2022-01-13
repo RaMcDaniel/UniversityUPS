@@ -62,12 +62,12 @@ class HashTable(object):
         return data
 
 
-h = HashTable(5)
-print(h)
+# h = HashTable(5)
+# print(h)
 
-h.put(1, ["wer", "wef", "sdtgg"])
-h.put(2, ["wer", "wef", "sdtgg", "sdfs"])
-h.get(2)
+# h.put(1, ["wer", "wef", "sdtgg"])
+# h.put(2, ["wer", "wef", "sdtgg", "sdfs"])
+# h.get(2)
 
 
 

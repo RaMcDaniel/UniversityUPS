@@ -57,7 +57,8 @@ class HashTable(object):
             else:
                 position = self.hash_again(position, len(self.key_buckets))
                 if position == start_bucket:
-                    stop == True
+                    data = "Package not in system"
+                    break
         print(data)
         return data
 

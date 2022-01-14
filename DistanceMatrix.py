@@ -1,5 +1,7 @@
 # This file contains the classes involved in creating an adjacency matrix
 # for distance information. Modeled from ZyBooks ch. 6.6.
+import csv
+
 
 class AddressVertex:
     def __init__(self, address):

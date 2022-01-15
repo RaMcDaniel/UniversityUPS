@@ -18,8 +18,20 @@ class Packages:
         with open(packages_csv, "r") as csv_file:
             package_list = csv.reader(csv_file)
 
+# !!!REWORK!!!
+# Don't put info directly into hashmap
+# this function will create package objects.
+# Create a package class and populate it
+# This package class will need a timekeeping method
             for line in package_list:
                 i = int(line[0])
                 hashmap.put(i, [line[1], line[2], line[3], line[4], line[5], line[6], line[7]])
                 # hashmap.get(i) # This statement tests contents of packages
+
+class Package:
+    def __init__(self):
+        # will need to somehow add timekeeping to each object
+        # this class will represent 40 packages, will have 40 members
+        # add 2(?) parameters, definitely the hashmap it's going to, and then the 7 things from csv
+        # it needs a method to add each package object to
 

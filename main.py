@@ -1,31 +1,27 @@
-import csv
-
+from Address import Addresses
 from Package import *
 from HashTable1 import HashTable
 from DistanceMatrix import *
 
+# Create instance of packages class
+todays_packages = Packages()
 
-Packages.get_number_of_packages("WGUPS Package File.csv")
+number_packages = todays_packages.get_number_of_packages("WGUPS Package File.csv")
 
 # create hashtable object with size corresponding to number of packages
-package_hashtable = HashTable(Packages.get_number_of_packages())
+package_hashtable = HashTable(number_packages)
 
 # populate hashtable with rows from csv
-Packages.put_packages_in_hashmap("WGUPS Package File.csv")
+todays_packages.put_packages_in_hashmap("WGUPS Package File.csv", package_hashtable)
+
 
 # Create an AddressMatrix object to hold addresses and distances from csv file
 city_map_matrix = AddressMatrix()
 
 # This part iterates over the distances csv and adds the first row,
 # which is the addresses, to the address_map
-with open("WGUPS Distance File Cleaned.csv", "r") as csv_file:
-    distances_csv = csv.reader(csv_file)
 
-    # next skips the header row in csv file.
-    next(distances_csv)
-    for line in distances_csv:
+todays_addresses = Addresses()
+todays_addresses.put_addresses_in_city_map_matrix("WGUPS Distance File Cleaned.csv", city_map_matrix)
 
-        city_map_matrix.add_address(line[0])
-
-print(city_map_matrix.address_map)
 

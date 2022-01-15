@@ -1,27 +1,17 @@
 import csv
 
-from UniversityUPS.HashTable1 import HashTable
+from Package import *
+from HashTable1 import HashTable
 from DistanceMatrix import *
 
 
-# Read CSV file as list to get number of packages
-counter = list(csv.reader(open("WGUPS Package File.csv")))
-package_count = len(counter)
-# print(len(counter))
+Packages.get_number_of_packages("WGUPS Package File.csv")
 
 # create hashtable object with size corresponding to number of packages
-package_hashtable = HashTable(package_count)
+package_hashtable = HashTable(Packages.get_number_of_packages())
 
 # populate hashtable with rows from csv
-
-with open("WGUPS Package File.csv", "r") as csv_file:
-    package_list = csv.reader(csv_file)
-
-    for line in package_list:
-        i = int(line[0])
-        package_hashtable.put(i, [line[1], line[2], line[3], line[4], line[5], line[6], line[7]])
-        # package_hashtable.get(i)
-
+Packages.put_packages_in_hashmap("WGUPS Package File.csv")
 
 # Create an AddressMatrix object to hold addresses and distances from csv file
 city_map_matrix = AddressMatrix()

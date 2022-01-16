@@ -35,7 +35,9 @@ todays_addresses.put_addresses_in_city_map_matrix("WGUPS Distance File Cleaned.c
 # This takes two steps:
 # 1. extract distances from csv to a 2D array
 
-distance_array = todays_addresses.put_distances_in_array()
+distance_array = todays_addresses.put_distances_in_array("WGUPS Distance File No Addresses.csv")
+# This line tests the contents of the distance_array. It is correct with added ' ' at end of lines.
+# print(distance_array)
 
 # 2. create a loop that populates the distance data using the
 # city_map_matrix.add_distance(address1, address2, distance) method
@@ -44,6 +46,10 @@ distance_array = todays_addresses.put_distances_in_array()
 # distances come from distance_array
 # **** Probably not to above lines. ***REWORKING***
 todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matrix)
+
+print(city_map_matrix.distance_between_addresses)
+# print(todays_addresses.address_list)
+
 
 # FINALLY
 # Call the damn algorithm

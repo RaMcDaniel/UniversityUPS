@@ -20,18 +20,29 @@ class Addresses:
                 address_matrix.add_address(line[0].lstrip())
                 self.address_list.append(line[0].lstrip())
 
-    def put_distances_in_array(self):
-        pass
+    def put_distances_in_array(self, address_csv_plain):
+        distance_array = []
+        with open(address_csv_plain, "r") as csv_file:
+            distances_csv_plain = csv.reader(csv_file)
+
+            for line in distances_csv_plain:
+                distance_array.append(line)
+                # The array created here has unnecessary ' ' at end of lines. These need to be filtered out
+                # when moving array to city_map_matrix
+        return distance_array
+
         # this method returns the array to distance_array variable in main
         # figure out how to move distances to array
 
     def put_distances_in_city_map_matrix(self, distance_array, distances_matrix):
-        pass
 
-        # for address in address list
-            # while i < 27 i=0, from index 0 to index  i, i++
-                # ?????
-        # This method does fancy loops to pass info to the
+        for i in range(0, 27):
+            for j in range(0, i):
+                distances_matrix.add_distance(self.address_list[i], self.address_list[j], distance_array[i][j])
+                j = j + 1
+            i = i + 1
+
+
         #***** distances_matrix.add_distance(address1, address2, distance) method*****
         # **** scratch that!? Create Node objects with weighted vertices?*****
 

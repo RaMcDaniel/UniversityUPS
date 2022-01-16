@@ -34,3 +34,4 @@ class AddressMatrix:
 # slc.add_distance("124 road", "934 ave", 7)
 # slc.add_distance("123 street", "934 ave", 10)
 # print(slc.address_map)
+# print(slc.distance_between_addresses)

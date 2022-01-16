@@ -14,7 +14,7 @@ class Packages:
         return package_count
         # print(len(counter))
 
-    def put_packages_in_hashmap(self, packages_csv, hashmap):
+    def create_package_objects(self, packages_csv, individual_packages):
         with open(packages_csv, "r") as csv_file:
             package_list = csv.reader(csv_file)
 
@@ -24,14 +24,17 @@ class Packages:
 # Create a package class and populate it
 # This package class will need a timekeeping method
             for line in package_list:
-                i = int(line[0])
-                hashmap.put(i, [line[1], line[2], line[3], line[4], line[5], line[6], line[7]])
-                # hashmap.get(i) # This statement tests contents of packages
+                # i = int(line[0])
+                status = "at hub"
+                individual_packages.all_individual_packages.append(
+                    [line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7], status])
+                # hashmap.put(i, [line[1], line[2], line[3], line[4], line[5], line[6], line[7]])
+
 
 class Package:
-    def __init__(self):
-        # will need to somehow add timekeeping to each object
-        # this class will represent 40 packages, will have 40 members
-        # add 2(?) parameters, definitely the hashmap it's going to, and then the 7 things from csv
-        # it needs a method to add each package object to
-
+    def __init__(self,):
+        self.all_individual_packages = []
+# will need to somehow add timekeeping to each object
+# this class will represent 40 packages, will have 40 members
+# add 2(?) parameters, definitely the hashmap it's going to, and then the 7 things from csv
+# it needs a method to add each package object to

@@ -12,18 +12,12 @@ number_packages = todays_packages.get_number_of_packages("WGUPS Package File.csv
 # This creates hashtable object with size corresponding to number of packages
 package_hashtable = HashTable(number_packages)
 
-# This creates an instance of Package class, where package objects are created
-individual_packages = Package()
 
-# !!!!REWORK!!!
-# Change this function in Address to make info into package objects
 # This populates hashtable with rows from csv
-todays_packages.create_package_objects("WGUPS Package File.csv", individual_packages)
-# This line tests that individual packages made it to all individual packages list
-# print(individual_packages.all_individual_packages)
-
-# Add additional function call here, to the function in Packages that adds package class objects to hashmap
-
+todays_packages.create_package_objects("WGUPS Package File.csv", package_hashtable)
+# These lines test that individual packages made it to the hashmap
+# package_hashtable.get(1)
+# package_hashtable.get(40)
 
 # This creates an AddressMatrix object to hold addresses and distances from csv file
 city_map_matrix = AddressMatrix()
@@ -34,6 +28,8 @@ todays_addresses = Addresses()
 # This part iterates over the distances csv and adds the first item of each row,
 # which is the addresses, to the address_map. These are the nodes of the graph.
 todays_addresses.put_addresses_in_city_map_matrix("WGUPS Distance File Cleaned.csv", city_map_matrix)
+# This tests that addresses were added to hashmap correctly
+# print(city_map_matrix.address_map)
 
 # This function completes the address_map by adding the distance vertices
 # This takes two steps:

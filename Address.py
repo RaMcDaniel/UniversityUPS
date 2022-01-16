@@ -17,7 +17,7 @@ class Addresses:
             # next skips the header row in csv file to get to first row of data.
             next(distances_csv)
             for line in distances_csv:
-                address_matrix.add_address(line[0])
+                address_matrix.add_address(line[0].lstrip())
                 self.address_list.append(line[0].lstrip())
 
     def put_distances_in_array(self):

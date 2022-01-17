@@ -47,7 +47,8 @@ distance_array = todays_addresses.put_distances_in_array("WGUPS Distance File No
 # **** Probably not to above lines. ***REWORKING***
 todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matrix)
 
-print(city_map_matrix.distance_between_addresses)
+# This tests that all distance vertexes are loaded properly
+# print(city_map_matrix.distance_between_addresses)
 # print(todays_addresses.address_list)
 
 

@@ -43,15 +43,3 @@ class Addresses:
             i = i + 1
 
 
-        #***** distances_matrix.add_distance(address1, address2, distance) method*****
-        # **** scratch that!? Create Node objects with weighted vertices?*****
-
-
-
-
-
-        # This tests that addresses were added to hashmap correctly
-        # print(address_matrix.address_map)
-
-        # This tests that the address list populates properly
-        # print(self.address_list)

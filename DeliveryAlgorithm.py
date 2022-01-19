@@ -31,24 +31,11 @@ class NearestNeighbor:
         self.i = 1
 
     def get_ordered_list(self):
-        for i in range(1, self.length+1):
-            self.node = self.start_node
-            if self.node == self.todays_addresses.address_list[i]:
-                i = i+1
-            distance = self.todays_addresses.address_list[self.truck_set[i]]
-            d = self.city_map_matrix.distance_between_addresses[self.node, distance]
-            print(distance)
-            print(type(d))
-            print(self.min_distance)
-            print(type(self.min_distance))
-            if float(d) < self.min_distance:
-                k = self.city_map_matrix.distance_between_addresses[self.node, self.todays_addresses.address_list[self.truck_set[i]]]
-                self.min_distance = float(k)
-                self.ordered_traversal_list.append(self.truck_set[i])
-                self.node = self.todays_addresses.address_list[self.truck_set[i]]
-                self.truck_set.remove(self.truck_set[i])
-                i = i+1
-        self.ordered_traversal_list.append("hub")
-        print(self.ordered_traversal_list)
-        return self.ordered_traversal_list
+        node = self.start_node
+
+               # truck_set.remove(package)
+        #self.ordered_traversal_list.append("hub")
+        #print(self.ordered_traversal_list)
+        # return self.ordered_traversal_list
+
 

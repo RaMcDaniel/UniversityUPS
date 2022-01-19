@@ -3,6 +3,7 @@ from Package import *
 from HashTable1 import HashTable
 from DistanceMatrix import *
 from Truck import *
+from DeliveryAlgorithm import *
 
 # Create instance of packages class
 todays_packages = Packages()
@@ -38,19 +39,21 @@ todays_addresses.put_addresses_in_city_map_matrix("WGUPS Distance File Cleaned.c
 
 distance_array = todays_addresses.put_distances_in_array("WGUPS Distance File No Addresses.csv")
 # This line tests the contents of the distance_array. It is correct with added ' ' at end of lines.
-# print(distance_array)
+# (distance_array)
 
 # 2. create a loop that populates the distance data using the
 # city_map_matrix.add_distance(address1, address2, distance) method
 todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matrix)
 
 # This tests that all distance vertexes are loaded properly
-# print(city_map_matrix.distance_between_addresses)
+print(city_map_matrix.distance_between_addresses)
+print(city_map_matrix.distance_between_addresses["1060 Dalton Ave S", "4001 South 700 East"])
 # print(todays_addresses.address_list)
 
 
 # This creates an instance of the truck class
 trucks = Truck()
+print(trucks.truck1_set)
 
 # This updates the package information in hashmap to include the truck number
 trucks.update_truck_in_hashmap(1, package_hashtable)
@@ -63,9 +66,14 @@ trucks.update_truck_in_hashmap(3, package_hashtable)
 truck1_start_time = trucks.truck_start_time(1, package_hashtable, "0800")
 truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0800")
 
+# Make an instance of NearestNeighbor class
+nearest_neighbor = NearestNeighbor(trucks, 1, city_map_matrix, todays_addresses)
+
+truck1_route = nearest_neighbor.get_ordered_list()
+
 # This tests updates in hashmap
-for id_num in range(1, number_packages+1):
-    package_hashtable.get(id_num)
+# for id_num in range(1, number_packages+1):
+    # package_hashtable.get(id_num)
 
 
 

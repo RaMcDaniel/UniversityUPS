@@ -2,6 +2,7 @@ from Address import Addresses
 from Package import *
 from HashTable1 import HashTable
 from DistanceMatrix import *
+from Truck import *
 
 # Create instance of packages class
 todays_packages = Packages()
@@ -50,6 +51,24 @@ todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matri
 # This tests that all distance vertexes are loaded properly
 # print(city_map_matrix.distance_between_addresses)
 # print(todays_addresses.address_list)
+
+
+# This creates an instance of the truck class
+trucks = Truck()
+
+# This updates the package information in hashmap to include the truck number
+trucks.update_truck_in_hashmap(1, package_hashtable)
+trucks.update_truck_in_hashmap(2, package_hashtable)
+trucks.update_truck_in_hashmap(3, package_hashtable)
+
+# This tests updates in hashmap
+for id_num in range(1, number_packages+1):
+    package_hashtable.get(id_num)
+
+
+
+
+
 
 
 # FINALLY

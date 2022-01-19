@@ -7,6 +7,10 @@ class HashTable(object):
         self.key_buckets = [None] * self.table_size
         self.data_buckets = [None] * self.table_size
 
+    def update(self, package_id, index, updated_value):
+        hash_value = self.hash_function(package_id, len(self.key_buckets))
+        self.data_buckets[hash_value][index] = updated_value
+
     def put(self, package_id, package_data):
 
         hash_value = self.hash_function(package_id, len(self.key_buckets))
@@ -68,6 +72,8 @@ class HashTable(object):
 
 # h.put(1, ["wer", "wef", "sdtgg"])
 # h.put(2, ["wer", "wef", "sdtgg", "sdfs"])
+# h.get(2)
+# h.update(2, 1, "wef2")
 # h.get(2)
 
 

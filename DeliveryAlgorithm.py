@@ -28,70 +28,44 @@ class NearestNeighbor:
         else:
             self.truck_set = trucks.truck3_set
 
-        self.length = len(self.truck_set)
-        self.i = 1
+    def get_data_bucket(self, current_package):
+        if current_package == 40:
+            current_address = self.package_hashtable.data_buckets[0][0]
+            return current_address
+        else:
+            current_address = self.package_hashtable.data_buckets[current_package][0]
+            return current_address
 
     def get_ordered_list(self):
         current_address = self.start_node
         min_distance = self.min_distance
-        packages_left = self.truck_set
-        print(packages_left)
+        packages_left = self.truck_set.copy()
+        # print(packages_left)
 
         i = 0
         for i in range(len(packages_left)):
             package_info = self.package_hashtable.get(packages_left[i])
             package_address = package_info[0]
             distance_btwn_node_package = self.city_map_matrix.distance_between_addresses[current_address, package_address]
-            print(packages_left[i])
-            print(min_distance)
+            # print(packages_left[i])
+            # print(min_distance)
             if float(distance_btwn_node_package) < min_distance:
                 min_distance = float(distance_btwn_node_package)
                 current_package = packages_left[i]
-                print(packages_left[i])
-                print(min_distance)
-                print(current_package)
+                # print(packages_left[i])
+                # print(min_distance)
+                # print(current_package)
 
+        self.ordered_traversal_list.append(current_package)
+        self.truck_set.remove(current_package)
+        data_bucket = self.get_data_bucket(int(current_package))
+        print(data_bucket)
+        # print(self.package_hashtable.data_buckets)
+        print(current_address)
+        print(self.truck_set)
+        print(self.ordered_traversal_list)
         print(current_package)
         print(min_distance)
 
-
-
-
-
-
-
-
-        #
-        # node = self.start_node
-        # truck_set_clone = self.truck_set.copy()
-        # min_distance = self.min_distance
-        # for package in truck_set_clone: # This clone you'll be removing 1st item from and can use in outer loop
-          #  print(f"package = {package}")
-           # package_info = self.package_hashtable.get(package)
-            # package_address = package_info[0]
-            #print(f"package_address = {package_address}")
-            # if node != package_address:
-              #  for inner_package in self.truck_set:
-               #     print(f"package = {inner_package}")
-                #    package_info = self.package_hashtable.get(inner_package)
-                 #   package_address = package_info[0]
-                  #  print(f"package_address = {package_address}")
-                   # distance_btwn_node_package = self.city_map_matrix.distance_between_addresses[node, package_address]
-                   # print(node)
-                   # print(distance_btwn_node_package)
-                   # if float(distance_btwn_node_package) < min_distance:
-                    #    min_distance = float(distance_btwn_node_package)
-                     #   print(min_distance)
-                # node = package_address
-                # print(node)
-                # while distance btwn node and package is less than self.min_distance
-                    # node = address of package
-                    # self.min_distance = distance between node and package
-
-
-               # truck_set.remove(package)
-        #self.ordered_traversal_list.append("hub")
-        #print(self.ordered_traversal_list)
-        # return self.ordered_traversal_list
 
 

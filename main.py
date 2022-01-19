@@ -42,10 +42,6 @@ distance_array = todays_addresses.put_distances_in_array("WGUPS Distance File No
 
 # 2. create a loop that populates the distance data using the
 # city_map_matrix.add_distance(address1, address2, distance) method
-# address 1 comes from todays_addresses.address_list
-# address 2 comes from todays_addresses.address_list with fancy counters
-# distances come from distance_array
-# **** Probably not to above lines. ***REWORKING***
 todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matrix)
 
 # This tests that all distance vertexes are loaded properly
@@ -61,9 +57,17 @@ trucks.update_truck_in_hashmap(1, package_hashtable)
 trucks.update_truck_in_hashmap(2, package_hashtable)
 trucks.update_truck_in_hashmap(3, package_hashtable)
 
+# The following two calls gives trucks 1 and 2 an 0800 start time
+# and returns the start time for later use.
+
+truck1_start_time = trucks.truck_start_time(1, package_hashtable, "0800")
+truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0800")
+
 # This tests updates in hashmap
 for id_num in range(1, number_packages+1):
     package_hashtable.get(id_num)
+
+
 
 
 

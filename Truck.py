@@ -24,6 +24,7 @@ class Truck:
         self.truck3_set = [2, 5, 6, 9, 25, 27, 28, 32, 33, 35, 39]  # packages that must leave later, 6 and 25 must be near start
                             # 9 can't be del until 1020
 
+    # This method updates hashmap with the truck each package is on.
     def update_truck_in_hashmap(self, truck_num, hashmap):
         if truck_num == 1:
             truck_set = self.truck1_set
@@ -36,9 +37,22 @@ class Truck:
             # 7 corresponds to the index of truck number in package data
             hashmap.update(package, 7, truck_num)
 
-    # find way to update 8th index of list in hashtable, for given key, to truck number.
+    # This method updates hashmap with the package status when truck leaves the hub.
+    def truck_start_time(self, truck_num, hashmap, start_time):
+        if truck_num == 1:
+            truck_set = self.truck1_set
+        elif truck_num == 2:
+            truck_set = self.truck2_set
+        else:
+            truck_set = self.truck3_set
 
-    def truck_start_time(self, truck_num, start_time):
-        pass
+        for package in truck_set:
+            # 9 corresponds to the index of status information in package data
+            hashmap.update(package, 9, f"On truck, left at: {start_time}")
+        return start_time
+
+
+
+
     # update status of objects in hashtable, index 10, to in transit
     # return start_time? for time delta later

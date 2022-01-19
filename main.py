@@ -46,8 +46,8 @@ distance_array = todays_addresses.put_distances_in_array("WGUPS Distance File No
 todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matrix)
 
 # This tests that all distance vertexes are loaded properly
-print(city_map_matrix.distance_between_addresses)
-print(city_map_matrix.distance_between_addresses["1060 Dalton Ave S", "4001 South 700 East"])
+# print(city_map_matrix.distance_between_addresses)
+# print(city_map_matrix.distance_between_addresses["1060 Dalton Ave S", "4001 South 700 East"])
 # print(todays_addresses.address_list)
 
 
@@ -67,9 +67,9 @@ truck1_start_time = trucks.truck_start_time(1, package_hashtable, "0800")
 truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0800")
 
 # Make an instance of NearestNeighbor class
-# nearest_neighbor = NearestNeighbor(trucks, 1, city_map_matrix, todays_addresses)
+nearest_neighbor = NearestNeighbor(trucks, 1, city_map_matrix, todays_addresses, package_hashtable)
 
-# truck1_route = nearest_neighbor.get_ordered_list()
+truck1_route = nearest_neighbor.get_ordered_list()
 
 # This tests updates in hashmap
 # for id_num in range(1, number_packages+1):

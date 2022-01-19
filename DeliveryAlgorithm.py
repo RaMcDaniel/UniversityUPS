@@ -11,7 +11,8 @@
 # 4.      Display total round-trip distance once all packages have been delivered.
 # a.      This needs to include the distance back to the hub when the truck is finished
 class NearestNeighbor:
-    def __init__(self, trucks, truck_num, city_map_matrix, todays_addresses):
+    def __init__(self, trucks, truck_num, city_map_matrix, todays_addresses, package_hashtable):
+        self.package_hashtable = package_hashtable
         self.city_map_matrix = city_map_matrix
         self.todays_addresses = todays_addresses
         self.node = ""
@@ -31,7 +32,62 @@ class NearestNeighbor:
         self.i = 1
 
     def get_ordered_list(self):
-        node = self.start_node
+        current_address = self.start_node
+        min_distance = self.min_distance
+        packages_left = self.truck_set
+        print(packages_left)
+
+        i = 0
+        for i in range(len(packages_left)):
+            package_info = self.package_hashtable.get(packages_left[i])
+            package_address = package_info[0]
+            distance_btwn_node_package = self.city_map_matrix.distance_between_addresses[current_address, package_address]
+            print(packages_left[i])
+            print(min_distance)
+            if float(distance_btwn_node_package) < min_distance:
+                min_distance = float(distance_btwn_node_package)
+                current_package = packages_left[i]
+                print(packages_left[i])
+                print(min_distance)
+                print(current_package)
+
+        print(current_package)
+        print(min_distance)
+
+
+
+
+
+
+
+
+        #
+        # node = self.start_node
+        # truck_set_clone = self.truck_set.copy()
+        # min_distance = self.min_distance
+        # for package in truck_set_clone: # This clone you'll be removing 1st item from and can use in outer loop
+          #  print(f"package = {package}")
+           # package_info = self.package_hashtable.get(package)
+            # package_address = package_info[0]
+            #print(f"package_address = {package_address}")
+            # if node != package_address:
+              #  for inner_package in self.truck_set:
+               #     print(f"package = {inner_package}")
+                #    package_info = self.package_hashtable.get(inner_package)
+                 #   package_address = package_info[0]
+                  #  print(f"package_address = {package_address}")
+                   # distance_btwn_node_package = self.city_map_matrix.distance_between_addresses[node, package_address]
+                   # print(node)
+                   # print(distance_btwn_node_package)
+                   # if float(distance_btwn_node_package) < min_distance:
+                    #    min_distance = float(distance_btwn_node_package)
+                     #   print(min_distance)
+                # node = package_address
+                # print(node)
+                # while distance btwn node and package is less than self.min_distance
+                    # node = address of package
+                    # self.min_distance = distance between node and package
+
 
                # truck_set.remove(package)
         #self.ordered_traversal_list.append("hub")

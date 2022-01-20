@@ -41,9 +41,9 @@ class NearestNeighbor:
         return distance
 
     def get_ordered_list(self):
-        print(self.truck_set)
+        # print(self.truck_set)
         length = len(self.truck_set)
-        print(length)
+        # print(length)
 
         current_package = self.start_node
         for i in range(0, len(self.truck_set)):
@@ -52,19 +52,33 @@ class NearestNeighbor:
                 for package in self.truck_set:
                     if package not in self.ordered_traversal_list:
                         package_address = self.get_address(package)
-                        value = self.get_distance_between_addresses(self.start_node, package_address)
-                        temp_dict[package] = value
-                print(temp_dict)
+                        if package_address != self.start_node:
+                            value = self.get_distance_between_addresses(self.start_node, package_address)
+                            temp_dict[package] = value
+                # print(temp_dict)
                 sorted_temp_dict = dict(sorted(temp_dict.items(), key=lambda item: item[1]))
-                print(sorted_temp_dict)
-
-
-                # current_package = closest package you determined
+                # print(sorted_temp_dict)
+                current_package = next(iter(sorted_temp_dict))
                 self.ordered_traversal_list.append(current_package)
+                # print(self.ordered_traversal_list)
+                # current_package = closest package you determined
             else:
-                break
-                #calculate distance from current package to next closest
-                #don't calc' distanced of things in self.ordered_traversal_list
+                temp_dict = {}
+                for package in self.truck_set:
+                    if package not in self.ordered_traversal_list:
+                        package_address = self.get_address(package)
+                        current_address = self.get_address(current_package)
+                        if package_address != current_address:
+                            value = self. get_distance_between_addresses(current_address, package_address)
+                            temp_dict[package] = value
+                            # print(temp_dict)
+                            sorted_temp_dict = dict(sorted(temp_dict.items(), key=lambda item: item[1]))
+                            # print(sorted_temp_dict)
+                            current_package = next(iter(sorted_temp_dict))
+                            if current_package not in self.ordered_traversal_list:
+                                self.ordered_traversal_list.append(current_package)
+                            # print(self.ordered_traversal_list)
+        return self.ordered_traversal_list
 
 
 

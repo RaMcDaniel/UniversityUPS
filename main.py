@@ -70,9 +70,10 @@ truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0800")
 nearest_neighbor = NearestNeighbor(trucks, 1, city_map_matrix, todays_addresses, package_hashtable)
 
 # This method implements a type of nearest neighbor algorithm on the 1st truck
-nearest_neighbor.get_ordered_list()
-# truck1_route = nearest_neighbor.get_ordered_list()
-# truck1_route.append("hub")
+# nearest_neighbor.get_ordered_list()
+truck1_route = nearest_neighbor.get_ordered_list()
+truck1_route.append("hub")
+print(truck1_route)
 
 # This tests the route calculated by get_ordered_list for truck 1
 # print(truck1_route)

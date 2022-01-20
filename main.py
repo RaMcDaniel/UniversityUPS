@@ -71,8 +71,8 @@ nearest_neighbor = NearestNeighbor(trucks, 1, city_map_matrix, todays_addresses,
 
 # This method implements a type of nearest neighbor algorithm on the 1st truck
 nearest_neighbor.get_ordered_list()
-truck1_route = nearest_neighbor.get_ordered_list()
-truck1_route.append("hub")
+# truck1_route = nearest_neighbor.get_ordered_list()
+# truck1_route.append("hub")
 
 # This tests the route calculated by get_ordered_list for truck 1
 # print(truck1_route)

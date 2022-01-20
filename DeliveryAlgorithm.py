@@ -17,7 +17,6 @@ class NearestNeighbor:
         self.todays_addresses = todays_addresses
         self.node = ""
         self.start_node = "4001 South 700 East"
-        self.end_node = "4001 South 700 East"
         self.min_distance = 50  # arbitrary large distance
         self.ordered_traversal_list = ["hub"]
 
@@ -43,6 +42,7 @@ class NearestNeighbor:
         # print(packages_left)
 
         i = 0
+        current_package = None
         for i in range(len(packages_left)):
             package_info = self.package_hashtable.get(packages_left[i])
             package_address = package_info[0]
@@ -56,16 +56,25 @@ class NearestNeighbor:
                 # print(min_distance)
                 # print(current_package)
 
+        if not packages_left:
+            # print(self.ordered_traversal_list)
+            return self.ordered_traversal_list
+
         self.ordered_traversal_list.append(current_package)
         self.truck_set.remove(current_package)
         data_bucket = self.get_data_bucket(int(current_package))
-        print(data_bucket)
+        current_address = data_bucket
+        # print(data_bucket)
         # print(self.package_hashtable.data_buckets)
         print(current_address)
         print(self.truck_set)
         print(self.ordered_traversal_list)
         print(current_package)
         print(min_distance)
+
+        self.get_ordered_list()
+        return self.get_ordered_list
+
 
 
 

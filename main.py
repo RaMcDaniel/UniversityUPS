@@ -111,7 +111,7 @@ print(truck3_route)
 
 
 # FINALLY
-# Call the damn algorithm
+# fix time stamp
 
 # Make a user interface
 

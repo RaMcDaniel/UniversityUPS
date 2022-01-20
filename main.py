@@ -54,6 +54,8 @@ todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matri
 # This creates an instance of the truck class
 trucks = Truck()
 print(trucks.truck1_set)
+print(trucks.truck2_set)
+print(trucks.truck3_set)
 
 # This updates the package information in hashmap to include the truck number
 trucks.update_truck_in_hashmap(1, package_hashtable)
@@ -70,27 +72,28 @@ truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0800")
 nearest_neighbor = NearestNeighbor(trucks, 1, city_map_matrix, todays_addresses, package_hashtable)
 
 # This method implements a type of nearest neighbor algorithm on the 1st truck
-# nearest_neighbor.get_ordered_list()
+# 'hub' is appended for later use in calculating times
 truck1_route = nearest_neighbor.get_ordered_list()
 truck1_route.append("hub")
+
+# Make a second instance of NearestNeighbor class for truck 2
+nearest_neighbor2 = NearestNeighbor(trucks, 2, city_map_matrix, todays_addresses, package_hashtable)
+
+# This method implements a type of nearest neighbor algorithm for the 2nd truck
+truck2_route = nearest_neighbor2.get_ordered_list()
+truck2_route.append("hub")
+
+# Make a third instance of NearestNeighbor class for truck 3
+nearest_neighbor3 = NearestNeighbor(trucks, 3, city_map_matrix, todays_addresses, package_hashtable)
+
+# This method implements a type of nearest neighbor algorithm for the 3rd truck
+truck3_route = nearest_neighbor3.get_ordered_list()
+truck3_route.append("hub")
+
+# This tests the route calculated by get_ordered_list for the 3 trucks
 print(truck1_route)
-
-# This tests the route calculated by get_ordered_list for truck 1
-# print(truck1_route)
-
-# Make a second instance of NearestNeighbor class
-# nearest_neighbor2 = NearestNeighbor(trucks, 2, city_map_matrix, todays_addresses, package_hashtable)
-
-# This method implements a type of nearest neighbor algorithm on the 1st truck
-# nearest_neighbor2.get_ordered_list()
-# truck2_route = nearest_neighbor2.get_ordered_list()
-# truck2_route.append("hub")
-
-# This tests the route calculated by get_ordered_list for truck 1
-# print(truck2_route)
-
-
-
+print(truck2_route)
+print(truck3_route)
 
 
 

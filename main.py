@@ -10,14 +10,12 @@ print(f"{'Welcome to WGUPS Package Management System' : ^10}")
 print("\n")
 print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^10}")
 report_time = (input('Time: '))
-
-time_str = '1234'
-dt_obj = datetime.datetime.strptime(time_str, '%H%M')
-
-print("The type is", type(dt_obj))
-print("The date is", dt_obj)
-
-
+today_date = "01-24-2022 "
+seconds = "00"
+combo_time = today_date+report_time+seconds
+date_obj = datetime.datetime.strptime(combo_time, '%m-%d-%Y %H%M%S')
+# print(date_obj)
+print(date_obj.strftime('%H:%M'))
 
 
 # Create instance of packages class

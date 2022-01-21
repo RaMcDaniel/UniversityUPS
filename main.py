@@ -1,9 +1,24 @@
+import datetime
 from Address import Addresses
 from Package import *
 from HashTable1 import HashTable
 from DistanceMatrix import *
 from Truck import *
 from DeliveryAlgorithm import *
+
+print(f"{'Welcome to WGUPS Package Management System' : ^10}")
+print("\n")
+print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^10}")
+report_time = (input('Time: '))
+
+time_str = '1234'
+dt_obj = datetime.datetime.strptime(time_str, '%H%M')
+
+print("The type is", type(dt_obj))
+print("The date is", dt_obj)
+
+
+
 
 # Create instance of packages class
 todays_packages = Packages()
@@ -53,9 +68,9 @@ todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matri
 
 # This creates an instance of the truck class
 trucks = Truck()
-print(trucks.truck1_set)
-print(trucks.truck2_set)
-print(trucks.truck3_set)
+# print(trucks.truck1_set)
+# print(trucks.truck2_set)
+# print(trucks.truck3_set)
 
 # This updates the package information in hashmap to include the truck number
 trucks.update_truck_in_hashmap(1, package_hashtable)
@@ -91,9 +106,9 @@ truck3_route = nearest_neighbor3.get_ordered_list()
 truck3_route.append("hub")
 
 # This tests the route calculated by get_ordered_list for the 3 trucks
-print(truck1_route)
-print(truck2_route)
-print(truck3_route)
+# print(truck1_route)
+# print(truck2_route)
+# print(truck3_route)
 
 
 

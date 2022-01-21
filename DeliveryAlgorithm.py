@@ -54,30 +54,36 @@ class NearestNeighbor:
                         package_address = self.get_address(package)
                         if package_address != self.start_node:
                             value = self.get_distance_between_addresses(self.start_node, package_address)
+                            # print(value)
                             temp_dict[package] = value
+                            # print(temp_dict)
                 # print(temp_dict)
                 sorted_temp_dict = dict(sorted(temp_dict.items(), key=lambda item: item[1]))
                 # print(sorted_temp_dict)
                 current_package = next(iter(sorted_temp_dict))
+                # print(current_package)
                 self.ordered_traversal_list.append(current_package)
                 # print(self.ordered_traversal_list)
                 # current_package = closest package you determined
             else:
                 temp_dict = {}
+                # print(current_package)
                 for package in self.truck_set:
                     if package not in self.ordered_traversal_list:
                         package_address = self.get_address(package)
                         current_address = self.get_address(current_package)
                         if package_address != current_address:
-                            value = self. get_distance_between_addresses(current_address, package_address)
-                            temp_dict[package] = value
+                            value = self.get_distance_between_addresses(current_address, package_address)
+                            temp_dict[package] = float(value)
                             # print(temp_dict)
                             sorted_temp_dict = dict(sorted(temp_dict.items(), key=lambda item: item[1]))
                             # print(sorted_temp_dict)
-                            current_package = next(iter(sorted_temp_dict))
-                            if current_package not in self.ordered_traversal_list:
-                                self.ordered_traversal_list.append(current_package)
-                            # print(self.ordered_traversal_list)
+                current_package = list(sorted_temp_dict)[0]
+                # print(f"what's this? {current_package}")
+                if current_package not in self.ordered_traversal_list:
+                    self.ordered_traversal_list.append(current_package)
+                        # print(self.ordered_traversal_list)
+        # print(self.ordered_traversal_list)
         return self.ordered_traversal_list
 
 

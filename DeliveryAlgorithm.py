@@ -20,6 +20,7 @@ class NearestNeighbor:
         self.min_distance = 50  # arbitrary large distance
         self.ordered_traversal_list = ["hub"]
         self.already_traversed = []
+        self.ordered_distance_dict = {}
 
         if truck_num == 1:
             self.truck_set = trucks.truck1_set
@@ -55,14 +56,18 @@ class NearestNeighbor:
                         if package_address != self.start_node:
                             value = self.get_distance_between_addresses(self.start_node, package_address)
                             # print(value)
-                            temp_dict[package] = value
+                            temp_dict[package] = float(value)
                             # print(temp_dict)
                 # print(temp_dict)
                 sorted_temp_dict = dict(sorted(temp_dict.items(), key=lambda item: item[1]))
                 # print(sorted_temp_dict)
-                current_package = next(iter(sorted_temp_dict))
+                current_package = list(sorted_temp_dict)[0]
+                    # next(iter(sorted_temp_dict))
+                # current_package_address = self.get_distance_between_addresses(self.start_node, current_package)
                 # print(current_package)
                 self.ordered_traversal_list.append(current_package)
+                self.ordered_distance_dict[current_package] = sorted_temp_dict.get(current_package)
+                # self.ordered_distance_dict[current_package] = current_package_address
                 # print(self.ordered_traversal_list)
                 # current_package = closest package you determined
             else:
@@ -82,8 +87,10 @@ class NearestNeighbor:
                 # print(f"what's this? {current_package}")
                 if current_package not in self.ordered_traversal_list:
                     self.ordered_traversal_list.append(current_package)
+                    self.ordered_distance_dict[current_package] = sorted_temp_dict.get(current_package)
                         # print(self.ordered_traversal_list)
-        # print(self.ordered_traversal_list)
+        print(self.ordered_traversal_list)
+        print(self.ordered_distance_dict)
         return self.ordered_traversal_list
 
 

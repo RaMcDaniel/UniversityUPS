@@ -51,8 +51,3 @@ class Truck:
             hashmap.update(package, 9, f"On truck, left at: {start_time}")
         return start_time
 
-
-
-
-    # update status of objects in hashtable, index 10, to in transit
-    # return start_time? for time delta later

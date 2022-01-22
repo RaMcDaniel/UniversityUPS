@@ -5,6 +5,7 @@ from HashTable1 import HashTable
 from DistanceMatrix import *
 from Truck import *
 from DeliveryAlgorithm import *
+from Time import *
 
 print(f"{'Welcome to WGUPS Package Management System' : ^10}")
 print("\n")
@@ -107,6 +108,28 @@ truck3_route.append("hub")
 # print(truck1_route)
 # print(truck2_route)
 # print(truck3_route)
+
+# ************YOU'RE HERE***************
+
+# Creates an instance of timing class for truck 1
+# timing_truck1 = Timing(truck1_route)
+
+# This method adds individual delivery times to hashtable,
+# and returns a list of distances
+# truck1_distances = timing_truck1.get_delivery_times()
+
+# This sums up the list of distances from truck 1 just obtained
+# truck1_end_time = timing_truck1.route_end_time(truck1_distances)
+
+# Creates an instance of timing class for truck 2
+# timing_truck2 = Timing(truck1_route)
+
+# This method adds individual delivery times to hashtable,
+# and returns a list of distances for truck 2
+# truck2_distances = timing_truck2.get_delivery_times()
+
+# This sums up the list of distances from truck 1 just obtained
+# truck2_end_time = timing_truck1.route_end_time(truck2_distances)
 
 
 

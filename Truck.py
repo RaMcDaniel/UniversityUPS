@@ -51,3 +51,4 @@ class Truck:
             hashmap.update(package, 9, f"On truck, left at: {start_time}")
         return start_time
 
+# **** convert these times to time objects ******

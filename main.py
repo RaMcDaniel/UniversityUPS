@@ -77,6 +77,7 @@ trucks.update_truck_in_hashmap(2, package_hashtable)
 trucks.update_truck_in_hashmap(3, package_hashtable)
 
 # The following two calls gives trucks 1 and 2 an 0800 start time
+# adds 0800 to the hashtable for item in trucks 1 and 2
 # and returns the start time for later use.
 
 truck1_start_time = trucks.truck_start_time(1, package_hashtable, "0800")

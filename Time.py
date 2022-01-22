@@ -1,3 +1,6 @@
+import DeliveryAlgorithm
+
+
 class Timing:
     def __init__(self, truck_route, city_map_matrix):
         self.truck_route = truck_route
@@ -22,10 +25,10 @@ class Timing:
         else:
             return truck2_end_time
 
-    def get_delivery_times(self):
-        pass
-        # print("you're here")
-        # print(self.truck_route)
+    def get_delivery_times(self, nearest_neighbor, report_time_object):
+        report_time = report_time_object
+        print(nearest_neighbor.ordered_distance_dict)
+        print(self.truck_route)
 
 
 

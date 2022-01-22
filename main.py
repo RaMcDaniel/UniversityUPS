@@ -14,9 +14,9 @@ report_time = (input('Time: '))
 today_date = "01-24-2022 "
 seconds = "00"
 combo_time = today_date+report_time+seconds
-date_obj = datetime.datetime.strptime(combo_time, '%m-%d-%Y %H%M%S')
+report_time_obj = datetime.datetime.strptime(combo_time, '%m-%d-%Y %H%M%S')
 # print(date_obj)
-print(date_obj.strftime('%H:%M'))
+print(report_time_obj.strftime('%H:%M'))
 
 
 # Create instance of packages class
@@ -112,11 +112,11 @@ truck3_route.append("hub")
 # ************YOU'RE HERE***************
 
 # Creates an instance of timing class for truck 1
-# timing_truck1 = Timing(truck1_route)
+timing_truck1 = Timing(truck1_route, city_map_matrix)
 
 # This method adds individual delivery times to hashtable,
 # and returns a list of distances
-# truck1_distances = timing_truck1.get_delivery_times()
+truck1_distances = timing_truck1.get_delivery_times(nearest_neighbor, report_time_obj)
 
 # This sums up the list of distances from truck 1 just obtained
 # truck1_end_time = timing_truck1.route_end_time(truck1_distances)

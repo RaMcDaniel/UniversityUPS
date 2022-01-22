@@ -89,7 +89,8 @@ class NearestNeighbor:
                     self.ordered_traversal_list.append(current_package)
                     self.ordered_distance_dict[current_package] = sorted_temp_dict.get(current_package)
                         # print(self.ordered_traversal_list)
-        self.ordered_distance_dict["hub"] = self.get_distance_between_addresses((self.get_address(current_package)), self.start_node)
+        hub_address_string = self.get_distance_between_addresses((self.get_address(current_package)), self.start_node)
+        self.ordered_distance_dict["hub"] = float(hub_address_string)
         # print(self.ordered_traversal_list)
         # print(self.ordered_distance_dict)
         return self.ordered_traversal_list

@@ -7,9 +7,13 @@ from Truck import *
 from DeliveryAlgorithm import *
 from Time import *
 
+# This is the user interface.
 print(f"{'Welcome to WGUPS Package Management System' : ^10}")
 print("\n")
 print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^10}")
+
+# The next set of lines convert the user provided time to run the report on
+# into a time object for use with the datetime library.
 report_time = (input('Time: '))
 today_date = "01-24-2022 "
 seconds = "00"
@@ -77,11 +81,13 @@ trucks.update_truck_in_hashmap(2, package_hashtable)
 trucks.update_truck_in_hashmap(3, package_hashtable)
 
 # The following two calls gives trucks 1 and 2 an 0800 start time
-# adds 0800 to the hashtable for item in trucks 1 and 2
+# adds 0800 to the hashtable for packages in trucks 1 and 2
 # and returns the start time for later use.
 
 truck1_start_time = trucks.truck_start_time(1, package_hashtable, "0800")
 truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0800")
+# print(truck1_start_time)
+# print(truck2_start_time)
 
 # Make an instance of NearestNeighbor class
 nearest_neighbor = NearestNeighbor(trucks, 1, city_map_matrix, todays_addresses, package_hashtable)

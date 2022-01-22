@@ -16,7 +16,7 @@ class Timing:
         return distance
 
     def convert_distance_to_time(self, distance):
-        pass
+        return distance
         # time = distance/18 # 18mph, answers is in hours
 
     def truck3_start_time(self, truck1_end_time, truck2_end_time):
@@ -29,6 +29,15 @@ class Timing:
         report_time = report_time_object
         print(nearest_neighbor.ordered_distance_dict)
         print(self.truck_route)
+
+        distance_piece_time_sum = 0
+        for key in nearest_neighbor.ordered_distance_dict:
+            distance_piece = nearest_neighbor.ordered_distance_dict[key]
+            distance_piece_time = self.convert_distance_to_time(distance_piece)
+            distance_piece_time_sum += distance_piece_time
+            print(distance_piece)
+            # print(distance_piece_time)
+            print(distance_piece_time_sum)
 
 
 

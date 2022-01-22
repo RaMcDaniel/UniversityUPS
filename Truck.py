@@ -1,3 +1,4 @@
+import datetime
 # This file will create a truck class and load packages.
 
 #    i.     Prioritization Algorithm
@@ -24,6 +25,14 @@ class Truck:
         self.truck3_set = [2, 5, 6, 9, 25, 27, 28, 32, 33, 35, 39]  # packages that must leave later, 6 and 25 must be near start
                             # 9 can't be del until 1020
 
+    def convert_time_to_time_object(self, time):
+        today_date = "01-24-2022 "
+        seconds = "00"
+        combo_time = today_date + time + seconds
+        time_obj = datetime.datetime.strptime(combo_time, '%m-%d-%Y %H%M%S')
+        # print(date_obj)
+        return time_obj.strftime('%H:%M')
+
     # This method updates hashmap with the truck each package is on.
     def update_truck_in_hashmap(self, truck_num, hashmap):
         if truck_num == 1:
@@ -46,9 +55,9 @@ class Truck:
         else:
             truck_set = self.truck3_set
 
+        start_time_object = self.convert_time_to_time_object(start_time)
         for package in truck_set:
             # 9 corresponds to the index of status information in package data
-            hashmap.update(package, 9, f"On truck, left at: {start_time}")
-        return start_time
+            hashmap.update(package, 9, f"On truck, left at: {start_time_object}")
+        return start_time_object
 
-# **** convert these times to time objects ******

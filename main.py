@@ -37,6 +37,7 @@ package_hashtable = HashTable(number_packages)
 todays_packages.create_package_objects("WGUPS Package File.csv", package_hashtable)
 # These lines test that individual packages made it to the hashmap
 # package_hashtable.get(1)
+# package_hashtable.get(34)
 # package_hashtable.get(40)
 
 # This creates an AddressMatrix object to hold addresses and distances from csv file
@@ -57,7 +58,7 @@ todays_addresses.put_addresses_in_city_map_matrix("WGUPS Distance File Cleaned.c
 
 distance_array = todays_addresses.put_distances_in_array("WGUPS Distance File No Addresses.csv")
 # This line tests the contents of the distance_array. It is correct with added ' ' at end of lines.
-# (distance_array)
+# print(distance_array)
 
 # 2. create a loop that populates the distance data using the
 # city_map_matrix.add_distance(address1, address2, distance) method
@@ -99,18 +100,18 @@ truck1_route = nearest_neighbor.get_ordered_list()
 truck1_route.append("hub")
 
 # Make a second instance of NearestNeighbor class for truck 2
-nearest_neighbor2 = NearestNeighbor(trucks, 2, city_map_matrix, todays_addresses, package_hashtable)
+# nearest_neighbor2 = NearestNeighbor(trucks, 2, city_map_matrix, todays_addresses, package_hashtable)
 
 # This method implements a type of nearest neighbor algorithm for the 2nd truck
-truck2_route = nearest_neighbor2.get_ordered_list()
-truck2_route.append("hub")
+# truck2_route = nearest_neighbor2.get_ordered_list()
+# truck2_route.append("hub")
 
 # Make a third instance of NearestNeighbor class for truck 3
-nearest_neighbor3 = NearestNeighbor(trucks, 3, city_map_matrix, todays_addresses, package_hashtable)
+# nearest_neighbor3 = NearestNeighbor(trucks, 3, city_map_matrix, todays_addresses, package_hashtable)
 
 # This method implements a type of nearest neighbor algorithm for the 3rd truck
-truck3_route = nearest_neighbor3.get_ordered_list()
-truck3_route.append("hub")
+# truck3_route = nearest_neighbor3.get_ordered_list()
+# truck3_route.append("hub")
 
 # This tests the route calculated by get_ordered_list for the 3 trucks
 # print(truck1_route)
@@ -126,30 +127,30 @@ truck1_return_time = timing_truck1.get_delivery_times(nearest_neighbor, report_t
 print(truck1_return_time)
 
 # Creates an instance of timing class for truck 2
-timing_truck2 = Timing(truck2_route, city_map_matrix, truck2_start_time)
+# timing_truck2 = Timing(truck2_route, city_map_matrix, truck2_start_time)
 
 # This method adds individual delivery times to hashtable,
 # and returns the time object when truck 2 makes it back to hub
-truck2_return_time = timing_truck2.get_delivery_times(nearest_neighbor2, report_time_obj)
-print(truck2_return_time)
+# truck2_return_time = timing_truck2.get_delivery_times(nearest_neighbor2, report_time_obj)
+# print(truck2_return_time)
 
 # This method compares the first two truck return times, and
 # returns the time of the fastest truck.
 # Truck 3 leaves when the first other truck arrives.
-truck3_start_time = timing_truck2.truck3_start_time(truck1_return_time, truck2_return_time)
-print(truck3_start_time)
+# truck3_start_time = timing_truck2.truck3_start_time(truck1_return_time, truck2_return_time)
+# print(truck3_start_time)
 
 # ************YOU'RE HERE***************
 
 # Creates an instance of timing class for truck 3
-timing_truck3 = Timing(truck3_route, city_map_matrix, truck3_start_time)
+# timing_truck3 = Timing(truck3_route, city_map_matrix, truck3_start_time)
 
 
 # This method adds individual delivery times to hashtable,
 # and returns the time object when truck 3 makes it back to hub
 
-truck3_return_time = timing_truck3.get_delivery_times(nearest_neighbor3, report_time_obj)
-print(truck3_return_time)
+# truck3_return_time = timing_truck3.get_delivery_times(nearest_neighbor3, report_time_obj)
+# print(truck3_return_time)
 
 
 

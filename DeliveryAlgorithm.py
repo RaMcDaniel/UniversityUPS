@@ -42,7 +42,7 @@ class NearestNeighbor:
         return distance
 
     def get_ordered_list(self):
-        # print(self.truck_set)
+        print(self.truck_set)
         length = len(self.truck_set)
         # print(length)
 
@@ -53,7 +53,7 @@ class NearestNeighbor:
                 for package in self.truck_set:
                     if package not in self.ordered_traversal_list:
                         package_address = self.get_address(package)
-                        if package_address != self.start_node:
+                        if package_address != self.start_node: # THIS IS THE PROBLEM
                             value = self.get_distance_between_addresses(self.start_node, package_address)
                             # print(value)
                             temp_dict[package] = float(value)
@@ -68,7 +68,7 @@ class NearestNeighbor:
                 self.ordered_traversal_list.append(current_package)
                 self.ordered_distance_dict[current_package] = sorted_temp_dict.get(current_package)
                 # self.ordered_distance_dict[current_package] = current_package_address
-                # print(self.ordered_traversal_list)
+                print(self.ordered_traversal_list)
                 # current_package = closest package you determined
             else:
                 temp_dict = {}
@@ -91,8 +91,8 @@ class NearestNeighbor:
                         # print(self.ordered_traversal_list)
         hub_address_string = self.get_distance_between_addresses((self.get_address(current_package)), self.start_node)
         self.ordered_distance_dict["hub"] = float(hub_address_string)
-        # print(self.ordered_traversal_list)
-        # print(self.ordered_distance_dict)
+        print(self.ordered_traversal_list)
+        print(self.ordered_distance_dict)
         return self.ordered_traversal_list
 
 

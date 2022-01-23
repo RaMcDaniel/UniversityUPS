@@ -117,27 +117,40 @@ truck3_route.append("hub")
 # print(truck2_route)
 # print(truck3_route)
 
-# ************YOU'RE HERE***************
-
 # Creates an instance of timing class for truck 1
 timing_truck1 = Timing(truck1_route, city_map_matrix, truck1_start_time)
 
 # This method adds individual delivery times to hashtable,
-# and returns a list of distances
-truck1_distances = timing_truck1.get_delivery_times(nearest_neighbor, report_time_obj)
-
-# This sums up the list of distances from truck 1 just obtained
-# truck1_end_time = timing_truck1.route_end_time(truck1_distances)
+# and returns the time object when truck 1 makes it back to hub
+truck1_return_time = timing_truck1.get_delivery_times(nearest_neighbor, report_time_obj)
+print(truck1_return_time)
 
 # Creates an instance of timing class for truck 2
-# timing_truck2 = Timing(truck1_route)
+timing_truck2 = Timing(truck2_route, city_map_matrix, truck2_start_time)
 
 # This method adds individual delivery times to hashtable,
-# and returns a list of distances for truck 2
-# truck2_distances = timing_truck2.get_delivery_times()
+# and returns the time object when truck 2 makes it back to hub
+truck2_return_time = timing_truck2.get_delivery_times(nearest_neighbor2, report_time_obj)
+print(truck2_return_time)
 
-# This sums up the list of distances from truck 1 just obtained
-# truck2_end_time = timing_truck1.route_end_time(truck2_distances)
+# This method compares the first two truck return times, and
+# returns the time of the fastest truck.
+# Truck 3 leaves when the first other truck arrives.
+truck3_start_time = timing_truck2.truck3_start_time(truck1_return_time, truck2_return_time)
+print(truck3_start_time)
+
+# ************YOU'RE HERE***************
+
+# Creates an instance of timing class for truck 3
+timing_truck3 = Timing(truck3_route, city_map_matrix, truck3_start_time)
+
+
+# This method adds individual delivery times to hashtable,
+# and returns the time object when truck 3 makes it back to hub
+
+truck3_return_time = timing_truck3.get_delivery_times(nearest_neighbor3, report_time_obj)
+print(truck3_return_time)
+
 
 
 

@@ -26,12 +26,12 @@ class Truck:
                             # 9 can't be del until 1020
 
     def convert_time_to_time_object(self, time):
-        today_date = "01-24-2022 "
+        today_date = "01-22-2022 "
         seconds = "00"
         combo_time = today_date + time + seconds
         time_obj = datetime.datetime.strptime(combo_time, '%m-%d-%Y %H%M%S')
-        # print(date_obj)
-        return time_obj.strftime('%H:%M')
+        return time_obj
+        # return time_obj.strftime('%H:%M')
 
     # This method updates hashmap with the truck each package is on.
     def update_truck_in_hashmap(self, truck_num, hashmap):
@@ -59,5 +59,6 @@ class Truck:
         for package in truck_set:
             # 9 corresponds to the index of status information in package data
             hashmap.update(package, 9, f"On truck, left at: {start_time_object}")
+            # print(start_time_object)
         return start_time_object
 

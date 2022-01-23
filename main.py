@@ -15,12 +15,12 @@ print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^10}")
 # The next set of lines convert the user provided time to run the report on
 # into a time object for use with the datetime library.
 report_time = (input('Time: '))
-today_date = "01-24-2022 "
+today_date = "01-22-2022 "
 seconds = "00"
 combo_time = today_date+report_time+seconds
 report_time_obj = datetime.datetime.strptime(combo_time, '%m-%d-%Y %H%M%S')
 # print(date_obj)
-print(report_time_obj.strftime('%H:%M'))
+# print(report_time_obj.strftime('%H:%M'))
 
 
 # Create instance of packages class
@@ -87,6 +87,7 @@ trucks.update_truck_in_hashmap(3, package_hashtable)
 truck1_start_time = trucks.truck_start_time(1, package_hashtable, "0800")
 truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0800")
 # print(truck1_start_time)
+# print(type(truck1_start_time))
 # print(truck2_start_time)
 
 # Make an instance of NearestNeighbor class
@@ -119,7 +120,7 @@ truck3_route.append("hub")
 # ************YOU'RE HERE***************
 
 # Creates an instance of timing class for truck 1
-timing_truck1 = Timing(truck1_route, city_map_matrix)
+timing_truck1 = Timing(truck1_route, city_map_matrix, truck1_start_time)
 
 # This method adds individual delivery times to hashtable,
 # and returns a list of distances

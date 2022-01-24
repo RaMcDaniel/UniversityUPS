@@ -69,6 +69,9 @@ todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matri
 # print(city_map_matrix.distance_between_addresses["1060 Dalton Ave S", "4001 South 700 East"])
 # print(todays_addresses.address_list)
 
+print("UPDATE: at 10:20, the address for package #9 was corrected.")
+print("It has been changed from '300 State St	Salt Lake City	UT	84103' to"
+      "'410 S State St., Salt Lake City, UT 84111'. Luckily, that truck hasn't left yet.")
 
 # This creates an instance of the truck class
 trucks = Truck()
@@ -86,7 +89,7 @@ trucks.update_truck_in_hashmap(3, package_hashtable)
 # and returns the start time for later use.
 
 truck1_start_time = trucks.truck_start_time(1, package_hashtable, "0800")
-truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0800")
+truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0905")
 # print(truck1_start_time)
 # print(type(truck1_start_time))
 # print(truck2_start_time)

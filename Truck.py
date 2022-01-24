@@ -17,7 +17,8 @@ import datetime
 # truck objects are loaded with package objects from elsewhere
 
 class Truck:
-    def __init__(self, size=16):
+    def __init__(self, report_time_object, size=16):
+        self.report_time_object = report_time_object
         self.size = size
         # These are the manually sorted trucks
         self.truck1_set = [1, 13, 14, 15, 16, 17, 19, 20, 21, 24, 29, 30, 31, 37, 40]  # packages with early deadlines
@@ -55,10 +56,15 @@ class Truck:
         else:
             truck_set = self.truck3_set
 
-        start_time_object = self.convert_time_to_time_object(start_time)
-        for package in truck_set:
-            # 9 corresponds to the index of status information in package data
-            hashmap.update(package, 9, f"On truck, left at: {start_time_object}")
-            # print(start_time_object)
-        return start_time_object
+        if type(start_time) is str:
+            start_time = self.convert_time_to_time_object(start_time)
+        print(f"start time object: {start_time}")
+        print(f"report time object: {self.report_time_object}")
+
+        if start_time <= self.report_time_object:
+            for package in truck_set:
+                # 9 corresponds to the index of status information in package data
+                hashmap.update(package, 9, f"On truck, left at: {start_time}")
+                # print(start_time_object)
+        return start_time
 

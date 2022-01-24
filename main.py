@@ -69,7 +69,7 @@ todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matri
 # print(todays_addresses.address_list)
 
 # This creates an instance of the truck class
-trucks = Truck()
+trucks = Truck(report_time_obj)
 # print(trucks.truck1_set)
 # print(trucks.truck2_set)
 # print(trucks.truck3_set)
@@ -79,8 +79,8 @@ update_time = "1020"
 update_time_object = trucks.convert_time_to_time_object(update_time)
 # print(update_time_object)
 if report_time_obj >= update_time_object:
-    package_hashtable.update(9, 1, "410 S State St.")
-    package_hashtable.update(9, 4, "84111")
+    package_hashtable.update(9, 0, "410 S State St")
+    package_hashtable.update(9, 3, "84111")
     print("UPDATE: at 10:20, the address for package #9 was corrected.")
     print("It has been changed from '300 State St	Salt Lake City	UT	84103' to"
           "'410 S State St., Salt Lake City, UT 84111'. Luckily, that truck hasn't left yet.")
@@ -133,7 +133,7 @@ timing_truck1 = Timing(truck1_route, city_map_matrix, truck1_start_time)
 # This method adds individual delivery times to hashtable,
 # and returns the time object when truck 1 makes it back to hub
 truck1_return_time = timing_truck1.get_delivery_times(nearest_neighbor, report_time_obj)
-print(f"truck 1 return time: {truck1_return_time}")
+# print(f"truck 1 return time: {truck1_return_time}")
 
 # Creates an instance of timing class for truck 2
 timing_truck2 = Timing(truck2_route, city_map_matrix, truck2_start_time)
@@ -141,13 +141,14 @@ timing_truck2 = Timing(truck2_route, city_map_matrix, truck2_start_time)
 # This method adds individual delivery times to hashtable,
 # and returns the time object when truck 2 makes it back to hub
 truck2_return_time = timing_truck2.get_delivery_times(nearest_neighbor2, report_time_obj)
-print(f"truck 2 return time: {truck2_return_time}")
+# print(f"truck 2 return time: {truck2_return_time}")
 
 # This method compares the first two truck return times, and
 # returns the time of the fastest truck.
 # Truck 3 leaves when the first other truck arrives.
+
 truck3_start_time = timing_truck2.truck3_start_time(truck1_return_time, truck2_return_time)
-print(f"truck 3 start time: {truck3_start_time}")
+# print(f"truck 3 start time: {truck3_start_time}")
 
 # Creates an instance of timing class for truck 3
 timing_truck3 = Timing(truck3_route, city_map_matrix, truck3_start_time)
@@ -156,7 +157,9 @@ timing_truck3 = Timing(truck3_route, city_map_matrix, truck3_start_time)
 # This method adds individual delivery times to hashtable,
 # and returns the time object when truck 3 makes it back to hub
 truck3_return_time = timing_truck3.get_delivery_times(nearest_neighbor3, report_time_obj)
-print(f"truck 3 return time: {truck3_return_time}")
+# print(f"truck 3 return time: {truck3_return_time}")
+
+truck3_start_time = trucks.truck_start_time(3, package_hashtable, truck3_start_time)
 
 
 # This tests updates in hashmap

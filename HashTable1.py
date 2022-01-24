@@ -63,7 +63,7 @@ class HashTable(object):
                 if position == start_bucket:
                     data = "Package not in system"
                     break
-        # print(data)
+        print(data)
         return data
 
 

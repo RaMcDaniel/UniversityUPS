@@ -64,6 +64,7 @@ class Timing:
         # print(self.truck_start_time)
         distance_piece_time_sum = self.truck_start_time
         current_time = self.truck_start_time
+        print(f"route stare time: {current_time}")
         for key in nearest_neighbor.ordered_distance_dict:
             distance_piece = nearest_neighbor.ordered_distance_dict[key]
             distance_piece_time = self.convert_distance_to_timedelta(distance_piece)

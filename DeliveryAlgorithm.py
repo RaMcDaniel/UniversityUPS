@@ -42,7 +42,7 @@ class NearestNeighbor:
         return distance
 
     def get_ordered_list(self):
-        print(self.truck_set)
+        # print(self.truck_set)
         length = len(self.truck_set)
         # print(length)
 
@@ -68,7 +68,7 @@ class NearestNeighbor:
                 self.ordered_traversal_list.append(current_package)
                 self.ordered_distance_dict[current_package] = sorted_temp_dict.get(current_package)
                 # self.ordered_distance_dict[current_package] = current_package_address
-                print(self.ordered_traversal_list)
+                # print(self.ordered_traversal_list)
                 # current_package = closest package you determined
             else:
                 temp_dict = {}

@@ -58,8 +58,8 @@ class Truck:
 
         if type(start_time) is str:
             start_time = self.convert_time_to_time_object(start_time)
-        print(f"start time object: {start_time}")
-        print(f"report time object: {self.report_time_object}")
+        # print(f"start time object: {start_time}")
+        # print(f"report time object: {self.report_time_object}")
 
         if start_time <= self.report_time_object:
             for package in truck_set:
@@ -67,4 +67,17 @@ class Truck:
                 hashmap.update(package, 9, f"On truck, left at: {start_time}")
                 # print(start_time_object)
         return start_time
+
+    def trucks_delivered(self, truck_num, hashmap):
+        if truck_num == 1:
+            truck_set = self.truck1_set
+        elif truck_num == 2:
+            truck_set = self.truck2_set
+        else:
+            truck_set = self.truck3_set
+
+        for package in truck_set:
+            # 9 corresponds to the index of status information in package data
+            hashmap.update(package, 9, f"Package delivered.")
+            # print(start_time_object)
 

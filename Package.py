@@ -8,12 +8,12 @@ class Packages:
         self.package_list = []
 
     # This method gets # of lines from CSV, and returns that to make the hashmap the right size.
+    # CSV reader is imported from the standard library to read the files.
     # This can contribute to re-usability from day to day, since the hashmap can easily change sizes.
     def get_number_of_packages(self, packages_csv):
         counter = list(csv.reader(open(packages_csv)))
         package_count = len(counter)
         return package_count
-        # print(len(counter))
 
     # This method puts packages from csv into hashmap
     def create_package_objects(self, packages_csv, hashmap):

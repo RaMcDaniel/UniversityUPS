@@ -1,16 +1,26 @@
 class HashTable(object):
 
-    # table_size refers to size of list you will make into hash table.
+    # The hashtable is the data structure holding all package information.
+    # Two parallel arrays hold the keys (package #), and the values (package data).
+    # A hashtable is ultimately a set of empty buckets you can store data in, so key_buckets can hold
+    # package numbers, and data buckets can hold package information.
+    # Since table size will always equal the number of rows in the package CSV, we don't need to account for collisions.
     def __init__(self, table_size):
 
         self.table_size = table_size
         self.key_buckets = [None] * self.table_size
         self.data_buckets = [None] * self.table_size
 
+    # This function can update a particular piece of data in the hashtable.
+    # The place in the table is obtained by recreating the hashfunction of package_id, and then
+    # the corresponding data_bucket index (index, for example, [0] would be address) is updated with updated_value.
     def update(self, package_id, index, updated_value):
         hash_value = self.hash_function(package_id, len(self.key_buckets))
         self.data_buckets[hash_value][index] = updated_value
 
+    # This part adds packages to the hashtable. It provides a fix for collisions via the path under "else:", but
+    # this shouldn't happen with this package set. It would be necessary if the hashfunction wasn't %number of packages.
+    # Hashmap implementation help obtained from: ***REFERENCE***
     def put(self, package_id, package_data):
 
         hash_value = self.hash_function(package_id, len(self.key_buckets))
@@ -38,13 +48,20 @@ class HashTable(object):
                 else:
                     self.data_buckets[next_bucket] = package_data
 
+    # This is a simple remainder method modulo hash function. %package number is the bucket that package will go into.
+    # This is super simple because table size = # of packages, and there is one bucket for each.
     def hash_function(self, key_package_id, table_size):
-        # simple remainder method modulo hash function
         return key_package_id % table_size
 
+    # A secondary hash function is an attempt for find an empty bucket. This simple one just adds 1 to previous hash.
     def hash_again(self, previous_hash, size):
         return (previous_hash + 1) % size
 
+    # This method obtains information already in the hashmap. It loops through the hashmap and finds the bucket that
+    # isn't None (empty) and is found (the bucket == key).
+    # else: gives an out of the loop. If you get back to start bucket, it means you've traversed the whole thing,
+    # so that package must not be in the system. This would happen for any package not 1-40.
+    # Hashmap implementation help obtained from: ***REFERENCE***
     def get(self, key):
         start_bucket = self.hash_function(key, len(self.key_buckets))
         data = None
@@ -63,6 +80,8 @@ class HashTable(object):
                 if position == start_bucket:
                     data = "Package not in system"
                     break
+        # This prints the package information for the user. The formatting is for readability.
+        # data[0][0:22] cuts long address short, and the .ljust methods pads each column for equal size.
         print(key, "\t", data[0][0:22].ljust(25), data[1][0:16].ljust(16), data[2], data[3], "\t", data[4][0:9].ljust(9),
               "\t", data[5].ljust(8), data[7], "\t", data[8].ljust(35), "\t", data[9])
         return data

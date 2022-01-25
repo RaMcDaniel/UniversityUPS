@@ -8,31 +8,32 @@ from Time import *
 
 # C1: Rebecca McDaniel, Student ID: 001426057
 
-# This is the user interface. The auditor enters the time they'd like a report here.
+# This is the user interface. This sets up the scenario and explains the permitted responses.
+# The f string formatting centers the printed strings.
 print(f"{'Welcome to WGUPS Package Management System' : ^125}")
 print(f"{'You are auditing the system from 1/22/2022' : ^125}")
 print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^125}")
 
-# The next set of lines convert the user provided time to run the report on
-# into a time object for use with the datetime library.
+# The next set of lines asks the user for the time they'd like to run the audit for.
+# combo_time adds additional information to create a complete datetime object using strptime.
+# datetime objects are necessary for timekeeping throughout.
+# This program could be improved in the future by making the date changeable.
 report_time = (input(f"{'Time:' : ^80}"))
 today_date = "01-22-2022 "
 seconds = "00"
 combo_time = today_date + report_time + seconds
 report_time_obj = datetime.datetime.strptime(combo_time, '%m-%d-%Y %H%M%S')
-# print(date_obj)
-# print(report_time_obj.strftime('%H:%M'))
-
 
 # Create instance of packages class
 todays_packages = Packages()
 
-# This obtains the number of packages from CSV file.
+# This obtains the number of packages from CSV file. This number is used in later functions.
 number_packages = todays_packages.get_number_of_packages("WGUPS Package File.csv")
 
-# This creates hashtable object with size corresponding to number of packages
+# This creates hashtable object with size corresponding to number_packages above.
 package_hashtable = HashTable(number_packages)
 
+# *********** HERE*********************
 # This populates hashtable with rows from csv
 todays_packages.create_package_objects("WGUPS Package File.csv", package_hashtable)
 # These lines test that individual packages made it to the hashmap

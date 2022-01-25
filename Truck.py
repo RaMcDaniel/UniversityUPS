@@ -21,9 +21,9 @@ class Truck:
         self.report_time_object = report_time_object
         self.size = size
         # These are the manually sorted trucks
-        self.truck1_set = [1, 13, 14, 15, 16, 17, 19, 20, 21, 24, 29, 30, 31, 37, 40]  # packages with early deadlines
-        self.truck2_set = [3, 6, 18, 23, 25, 26, 34, 36, 38]  # truck goes out same time with #1
-        self.truck3_set = [2, 4, 5, 7, 8, 9, 10, 11, 12, 22, 27, 28, 32, 33, 35, 39]  # packages that must leave later, 6 and 25 must be near start
+        self.truck1_set = [1, 2, 8, 14, 15, 16, 19, 20, 26, 29, 37, 40]  # packages with early deadlines
+        self.truck2_set = [3, 6, 11, 12, 13, 17, 18, 23, 25, 30, 31, 34, 35, 36, 38]  # truck goes out @ 905
+        self.truck3_set = [4, 5, 7, 9, 10, 21, 22, 24, 27, 28, 32, 33, 39]  # packages that must leave later, 6 and 25 must be near start
                             # 9 can't be del until 1020
 
     def convert_time_to_time_object(self, time):

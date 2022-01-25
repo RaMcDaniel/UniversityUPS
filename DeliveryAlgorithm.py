@@ -21,6 +21,7 @@ class NearestNeighbor:
         self.ordered_traversal_list = ["hub"]
         self.already_traversed = []
         self.ordered_distance_dict = {}
+        self.truck_mileage = 0
 
         if truck_num == 1:
             self.truck_set = trucks.truck1_set
@@ -53,7 +54,7 @@ class NearestNeighbor:
                 for package in self.truck_set:
                     if package not in self.ordered_traversal_list:
                         package_address = self.get_address(package)
-                        if package_address != self.start_node: # THIS IS THE PROBLEM
+                        if package_address != self.start_node:
                             value = self.get_distance_between_addresses(self.start_node, package_address)
                             # print(value)
                             temp_dict[package] = float(value)
@@ -93,6 +94,9 @@ class NearestNeighbor:
         self.ordered_distance_dict["hub"] = float(hub_address_string)
         # print(self.ordered_traversal_list)
         # print(self.ordered_distance_dict)
+        # print(self.ordered_distance_dict)
+        self.truck_mileage = sum(self.ordered_distance_dict.values())
+        # print(self.truck_mileage)
         return self.ordered_traversal_list
 
 

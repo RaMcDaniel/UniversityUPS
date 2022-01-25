@@ -41,15 +41,14 @@ class Timing:
             return truck2_end_time
 
     def get_delivery_times(self, nearest_neighbor, report_time_object):
-        report_time = report_time_object
-        print(nearest_neighbor.ordered_distance_dict)
+        # print(nearest_neighbor.ordered_distance_dict)
         # print(self.truck_route)
         # print(type(self.truck_start_time))
         # print(self.truck_start_time)
         current_time = self.truck_start_time
         # print(f"route start time: {current_time}")
         for key in nearest_neighbor.ordered_distance_dict:
-            print(f"key is : {key}")
+            # print(f"key is : {key}")
             distance_piece = nearest_neighbor.ordered_distance_dict[key]
             distance_piece_time = self.convert_distance_to_timedelta(distance_piece)
             # print(distance_piece_time)
@@ -57,11 +56,12 @@ class Timing:
             # print(current_time)
             # print(type(current_time))
             new_time = current_time + distance_piece_time  # distance_piece_time
-            print(new_time)
+            # print(new_time)
             if new_time <= report_time_object:
                 if key != "hub":
                     # 9 corresponds to the index of status information in package data
                     self.package_hashtable.update(key, 9, f"Package delivered.")
+                    self.package_hashtable.update(key, 8, f"Delivered at: {new_time}.")
 
             current_time = new_time
         # print(current_time)

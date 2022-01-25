@@ -1,4 +1,3 @@
-import datetime
 from Address import Addresses
 from Package import *
 from HashTable1 import HashTable
@@ -7,7 +6,9 @@ from Truck import *
 from DeliveryAlgorithm import *
 from Time import *
 
-# This is the user interface.
+# C1: Rebecca McDaniel, Student ID: 001426057
+
+# This is the user interface. The auditor enters the time they'd like a report here.
 print(f"{'Welcome to WGUPS Package Management System' : ^125}")
 print(f"{'You are auditing the system from 1/22/2022' : ^125}")
 print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^125}")

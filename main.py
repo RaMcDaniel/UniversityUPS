@@ -8,13 +8,13 @@ from DeliveryAlgorithm import *
 from Time import *
 
 # This is the user interface.
-print(f"{'Welcome to WGUPS Package Management System' : ^10}")
-print("\n")
-print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^10}")
+print(f"{'Welcome to WGUPS Package Management System' : ^125}")
+print(f"{'You are auditing the system from 1/22/2022' : ^125}")
+print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^125}")
 
 # The next set of lines convert the user provided time to run the report on
 # into a time object for use with the datetime library.
-report_time = (input('Time: '))
+report_time = (input(f"{'Time:' : ^80}"))
 today_date = "01-22-2022 "
 seconds = "00"
 combo_time = today_date + report_time + seconds
@@ -82,8 +82,8 @@ if report_time_obj >= update_time_object:
     package_hashtable.update(9, 0, "410 S State St")
     package_hashtable.update(9, 3, "84111")
     print("UPDATE: at 10:20, the address for package #9 was corrected.")
-    print("It has been changed from '300 State St	Salt Lake City	UT	84103' to"
-          "'410 S State St., Salt Lake City, UT 84111'. Luckily, that truck hasn't left yet.")
+    print("It has been changed from '300 State St., Salt Lake City, UT	84103' to \n"
+          "'410 S State St., Salt Lake City, UT 84111'. \nLuckily, that truck hadn't left yet.\n")
 
 # This updates the package information in hashmap to include the truck number
 trucks.update_truck_in_hashmap(1, package_hashtable)
@@ -133,7 +133,6 @@ timing_truck1 = Timing(truck1_route, city_map_matrix, truck1_start_time, package
 # This method adds individual delivery times to hashtable,
 # and returns the time object when truck 1 makes it back to hub
 truck1_return_time = timing_truck1.get_delivery_times(nearest_neighbor, report_time_obj)
-print(f"truck 1 return time: {truck1_return_time}")
 
 # Creates an instance of timing class for truck 2
 timing_truck2 = Timing(truck2_route, city_map_matrix, truck2_start_time, package_hashtable)
@@ -141,7 +140,6 @@ timing_truck2 = Timing(truck2_route, city_map_matrix, truck2_start_time, package
 # This method adds individual delivery times to hashtable,
 # and returns the time object when truck 2 makes it back to hub
 truck2_return_time = timing_truck2.get_delivery_times(nearest_neighbor2, report_time_obj)
-print(f"truck 2 return time: {truck2_return_time}")
 
 # This method compares the first two truck return times, and
 # returns the time of the fastest truck.
@@ -158,7 +156,6 @@ timing_truck3 = Timing(truck3_route, city_map_matrix, truck3_start_time, package
 # This method adds individual delivery times to hashtable,
 # and returns the time object when truck 3 makes it back to hub
 truck3_return_time = timing_truck3.get_delivery_times(nearest_neighbor3, report_time_obj)
-# print(f"truck 3 return time: {truck3_return_time}")
 
 # Each truck mileage is specific to the truck.
 truck1_mileage = nearest_neighbor.truck_mileage
@@ -166,17 +163,18 @@ truck2_mileage = nearest_neighbor2.truck_mileage
 truck3_mileage = nearest_neighbor3.truck_mileage
 
 total_mileage = truck1_mileage + truck2_mileage + truck3_mileage
-print(f"The total miles for all 3 trucks is: {total_mileage}")
 
+# This is a header for the package information table
+print("Num. Address                   City             St  Zip      Due at      LB     Truck    Delivery Time                           Status")
 
-
-
-
-# This tests updates in hashmap
+# This prints the formatted package information
 for id_num in range(1, number_packages+1):
     package_hashtable.get(id_num)
 
-# FINALLY
-# fix time stamp
+print("\n")
+print(f"truck 1 returned at: {truck1_return_time}")
+print(f"truck 2 returned at: {truck2_return_time}")
+print(f"truck 3 returned at: {truck3_return_time}")
 
-# Make a user interface
+print("\n")
+print(f"The total miles for all 3 trucks at the end of the day: {total_mileage}\n")

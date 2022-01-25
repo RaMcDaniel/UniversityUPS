@@ -63,18 +63,10 @@ class HashTable(object):
                 if position == start_bucket:
                     data = "Package not in system"
                     break
-        print(data)
+        print(key, "\t", data[0][0:22].ljust(25), data[1][0:16].ljust(16), data[2], data[3], "\t", data[4][0:9].ljust(9),
+              "\t", data[5].ljust(8), data[7], "\t", data[8].ljust(35), "\t", data[9])
         return data
 
-
-# h = HashTable(5)
-# print(h)
-
-# h.put(1, ["wer", "wef", "sdtgg"])
-# h.put(2, ["wer", "wef", "sdtgg", "sdfs"])
-# h.get(2)
-# h.update(2, 1, "wef2")
-# h.get(2)
 
 
 

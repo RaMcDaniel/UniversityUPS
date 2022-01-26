@@ -10,6 +10,7 @@ from Time import *
 
 # This is the user interface. This sets up the scenario and explains the permitted responses.
 # The f string formatting centers the printed strings.
+# Big
 print(f"{'Welcome to WGUPS Package Management System' : ^125}")
 print(f"{'You are auditing the system from 1/22/2022' : ^125}")
 print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^125}")

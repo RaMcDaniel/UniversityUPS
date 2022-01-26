@@ -40,7 +40,3 @@ class Addresses:
         for i in range(0, 27):
             for j in range(0, i):
                 distances_matrix.add_distance(self.address_list[i], self.address_list[j], distance_array[i][j])
-                j = j + 1
-            i = i + 1
-
-

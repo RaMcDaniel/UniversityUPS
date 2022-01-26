@@ -67,4 +67,3 @@ class Truck:
         for package in truck_set:
             # 9 corresponds to the index of status information in package data
             hashmap.update(package, 9, f"Package delivered.")
-

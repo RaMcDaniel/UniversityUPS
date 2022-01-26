@@ -33,7 +33,6 @@ number_packages = todays_packages.get_number_of_packages("WGUPS Package File.csv
 # This creates hashtable object with size corresponding to number_packages above.
 package_hashtable = HashTable(number_packages)
 
-# *********** HERE*********************
 # This populates hashtable with rows from csv
 todays_packages.create_package_objects("WGUPS Package File.csv", package_hashtable)
 
@@ -78,17 +77,15 @@ trucks.update_truck_in_hashmap(1, package_hashtable)
 trucks.update_truck_in_hashmap(2, package_hashtable)
 trucks.update_truck_in_hashmap(3, package_hashtable)
 
-# The following two calls gives trucks 1 and 2 an 0800 start time
-# adds 0800 to the hashtable for packages in trucks 1 and 2
-# and returns the start time for later use.
-
+# The following two calls gives trucks 1 and 2 their start times.
+# These methods take convert the string times (0800, 0905) to datetime objects, add those to the hashtable,
+# and return the objects for later use.
 truck1_start_time = trucks.truck_start_time(1, package_hashtable, "0800")
 truck2_start_time = trucks.truck_start_time(2, package_hashtable, "0905")
-# print(truck1_start_time)
-# print(type(truck1_start_time))
-# print(truck2_start_time)
 
-# Make an instance of NearestNeighbor class
+# This makes an instance of NearestNeighbor class.
+# NearestNeighbor is the main algorithm, and needs to know the specific truck, city_map_matrix, address list,
+# and hashtable is it working with, which is why all the arguments.
 nearest_neighbor = NearestNeighbor(trucks, 1, city_map_matrix, todays_addresses, package_hashtable)
 
 # This method implements a type of nearest neighbor algorithm on the 1st truck
@@ -96,26 +93,24 @@ nearest_neighbor = NearestNeighbor(trucks, 1, city_map_matrix, todays_addresses,
 truck1_route = nearest_neighbor.get_ordered_list()
 truck1_route.append("hub")
 
-# Make a second instance of NearestNeighbor class for truck 2
+# This makes a second instance of the NearestNeighbor class for truck 2
 nearest_neighbor2 = NearestNeighbor(trucks, 2, city_map_matrix, todays_addresses, package_hashtable)
 
 # This method implements a type of nearest neighbor algorithm for the 2nd truck
 truck2_route = nearest_neighbor2.get_ordered_list()
 truck2_route.append("hub")
 
-# Make a third instance of NearestNeighbor class for truck 3
+# This makes a third instance of the NearestNeighbor class for truck 3
 nearest_neighbor3 = NearestNeighbor(trucks, 3, city_map_matrix, todays_addresses, package_hashtable)
 
 # This method implements a type of nearest neighbor algorithm for the 3rd truck
 truck3_route = nearest_neighbor3.get_ordered_list()
 truck3_route.append("hub")
 
-# This tests the route calculated by get_ordered_list for the 3 trucks
-# print(truck1_route)
-# print(truck2_route)
-# print(truck3_route)
+# *********** HERE*********************
 
 # Creates an instance of timing class for truck 1
+# The timing class gets ordered lists of package distances and handles time stamps.
 timing_truck1 = Timing(truck1_route, city_map_matrix, truck1_start_time, package_hashtable)
 
 # This method adds individual delivery times to hashtable,
@@ -131,25 +126,24 @@ truck2_return_time = timing_truck2.get_delivery_times(nearest_neighbor2, report_
 
 # This method compares the first two truck return times, and
 # returns the time of the fastest truck.
-# Truck 3 leaves when the first other truck arrives.
-
+# Truck 3 leaves when the first other truck arrives back at the hub.
 truck3_start_time = timing_truck2.truck3_start_time(truck1_return_time, truck2_return_time)
-# print(f"truck 3 start time: {truck3_start_time}")
 truck3_start_time = trucks.truck_start_time(3, package_hashtable, truck3_start_time)
 
 # Creates an instance of timing class for truck 3
 timing_truck3 = Timing(truck3_route, city_map_matrix, truck3_start_time, package_hashtable)
-
 
 # This method adds individual delivery times to hashtable,
 # and returns the time object when truck 3 makes it back to hub
 truck3_return_time = timing_truck3.get_delivery_times(nearest_neighbor3, report_time_obj)
 
 # Each truck mileage is specific to the truck.
+# It is obtained from the sum of dictionary values in the nearest neighbor class.
 truck1_mileage = nearest_neighbor.truck_mileage
 truck2_mileage = nearest_neighbor2.truck_mileage
 truck3_mileage = nearest_neighbor3.truck_mileage
 
+# This sums the mileages to get a total.
 total_mileage = truck1_mileage + truck2_mileage + truck3_mileage
 
 # This is a header for the package information table
@@ -159,10 +153,12 @@ print("Num. Address                   City             St  Zip      Due at      
 for id_num in range(1, number_packages+1):
     package_hashtable.get(id_num)
 
+# These print truck return times to ensure the last truck arrives back during business hours.
 print("\n")
 print(f"truck 1 returned at: {truck1_return_time}")
 print(f"truck 2 returned at: {truck2_return_time}")
 print(f"truck 3 returned at: {truck3_return_time}")
 
+# This prints the total mileage.
 print("\n")
 print(f"The total miles for all 3 trucks at the end of the day: {total_mileage}\n")

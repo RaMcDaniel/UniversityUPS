@@ -36,50 +36,35 @@ package_hashtable = HashTable(number_packages)
 # *********** HERE*********************
 # This populates hashtable with rows from csv
 todays_packages.create_package_objects("WGUPS Package File.csv", package_hashtable)
-# These lines test that individual packages made it to the hashmap
-# package_hashtable.get(1)
-# package_hashtable.get(34)
-# package_hashtable.get(40)
 
-# This creates an AddressMatrix object to hold addresses and distances from csv file
+# This creates an instance of AddressMatrix, to hold addresses and distances from CSV file.
 city_map_matrix = AddressMatrix()
 
-# This creates an instance of the Addresses class to utilize those methods
+# This creates an instance of the Addresses class to utilize methods pertaining to the addresses.
 todays_addresses = Addresses()
 
-# This part iterates over the distances csv and adds the first item of each row,
-# which is the addresses, to the address_map. These are the nodes of the graph.
+# This part iterates over the distances csv and adds the first item of each row, the addresses, to the address_map.
 todays_addresses.put_addresses_in_city_map_matrix("WGUPS Distance File Cleaned.csv", city_map_matrix)
-# This tests that addresses were added to hashmap correctly
-# print(city_map_matrix.address_map)
 
-# This function completes the address_map by adding the distance vertices
+# This function completes the address_map by adding the corresponding distances.
 # This takes two steps:
 # 1. extract distances from csv to a 2D array
-
 distance_array = todays_addresses.put_distances_in_array("WGUPS Distance File No Addresses.csv")
-# This line tests the contents of the distance_array. It is correct with added ' ' at end of lines.
-# print(distance_array)
 
-# 2. create a loop that populates the distance data using the
-# city_map_matrix.add_distance(address1, address2, distance) method
+# 2. create a loop that populates the distance data into city_map_matrix, using the address list and distances array.
 todays_addresses.put_distances_in_city_map_matrix(distance_array, city_map_matrix)
 
-# This tests that all distance vertexes are loaded properly
-# print(city_map_matrix.distance_between_addresses)
-# print(city_map_matrix.distance_between_addresses["1060 Dalton Ave S", "4001 South 700 East"])
-# print(todays_addresses.address_list)
-
-# This creates an instance of the truck class
+# This creates an instance of the truck class. It needs the report_time_obj chosen by user to calculate package times.
 trucks = Truck(report_time_obj)
-# print(trucks.truck1_set)
-# print(trucks.truck2_set)
-# print(trucks.truck3_set)
 
-# print(report_time_obj)
+# The following lines address package #9 and its wrong address. If the user enters a time before 1020, #9 gets keeps
+# its incorrect address, but if the time given is after 1020, the user is informed the package is updated, via
+# the print statements, and the package object in the hashtable is updated via package_hashtable.update.
+# It is on truck #3, which doesn't leave until after 1020, so the object's truck interaction is fine without change.
+# The convert_time_to_time_object method is necessary to turn 1020 into an object that can be compared against.
 update_time = "1020"
 update_time_object = trucks.convert_time_to_time_object(update_time)
-# print(update_time_object)
+
 if report_time_obj >= update_time_object:
     package_hashtable.update(9, 0, "410 S State St")
     package_hashtable.update(9, 3, "84111")
@@ -87,7 +72,8 @@ if report_time_obj >= update_time_object:
     print("It has been changed from '300 State St., Salt Lake City, UT	84103' to \n"
           "'410 S State St., Salt Lake City, UT 84111'. \nLuckily, that truck hadn't left yet.\n")
 
-# This updates the package information in hashmap to include the truck number
+# This updates the package information in hashmap to include the truck number.
+# These 3 functions loop through the items in each individual truck and add truck numbers.
 trucks.update_truck_in_hashmap(1, package_hashtable)
 trucks.update_truck_in_hashmap(2, package_hashtable)
 trucks.update_truck_in_hashmap(3, package_hashtable)

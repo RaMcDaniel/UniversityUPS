@@ -1,8 +1,6 @@
 import csv
 
 # The package file stores package information and the functions that extract it from the CSV
-
-
 class Packages:
     def __init__(self):
         self.package_list = []
@@ -15,11 +13,13 @@ class Packages:
         package_count = len(counter)
         return package_count
 
-    # This method puts packages from csv into hashmap
+    # This method uses CSV reader to read each line, which corresponds to information for one package.
+    # index 0-7 correspond to the provided information. Truck_num, time_stamp and status are added for status tracking.
     def create_package_objects(self, packages_csv, hashmap):
         with open(packages_csv, "r") as csv_file:
             package_list = csv.reader(csv_file)
 
+            # putting i in the first slot makes the numbers correspond with packages instead of starting at 0.
             for line in package_list:
                 i = int(line[0])
                 status = "at hub"

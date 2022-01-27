@@ -10,6 +10,10 @@ class Timing:
         self.truck_route = truck_route
         self.city_map_matrix = city_map_matrix
 
+    # B3.19 Space complexity: O(1)
+    # A set number of variables are created rgardless of package number
+    # B3.19 Time Complexity: O(1)
+    # A calculation is performed on one object independent of package number.
     # Times are calculated based on distance. MPH is given by instructor.
     # MPH is converted to time in minutes.
     # Minutes modulo 60 leaves the minutes as a remainder.

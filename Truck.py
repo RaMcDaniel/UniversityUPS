@@ -11,6 +11,7 @@ class Truck:
         self.truck2_set = [3, 6, 11, 12, 17, 18, 23, 25, 30, 31, 34, 35, 36, 38]  # Goes out @ 0905
         self.truck3_set = [4, 5, 7, 9, 10, 21, 22, 24, 27, 28, 32, 33, 39]  # Packages that must leave later,
 
+    # Space and time complexity: See B3.19. This performs a similar function.
     # This function adds dates and seconds to make complete datetime objects.
     def convert_time_to_time_object(self, time):
         today_date = "01-22-2022 "
@@ -54,6 +55,7 @@ class Truck:
                 hashmap.update(package, 9, f"On truck, left at: {start_time}")
         return start_time
 
+    # Space and time complexity: See B3.9. This performs a similar function.
     # This is another status update method, except this one updates to "Package delivered." It is called by a different
     # function later that handles package delivery times.
     def trucks_delivered(self, truck_num, hashmap):

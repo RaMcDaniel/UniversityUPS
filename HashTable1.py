@@ -11,6 +11,10 @@ class HashTable(object):
         self.key_buckets = [None] * self.table_size
         self.data_buckets = [None] * self.table_size
 
+    # B3.20 Space complexity: O(1)
+    # One variable is updated, regardless of package number
+    # B3.20 Time Complexity: O(1)
+    # Hash tables do not require loops to access.
     # This function can update a particular piece of data in the hashtable.
     # The place in the table is obtained by recreating the hashfunction of package_id, and then
     # the corresponding data_bucket index (index, for example, [0] would be address) is updated with updated_value.
@@ -18,6 +22,10 @@ class HashTable(object):
         hash_value = self.hash_function(package_id, len(self.key_buckets))
         self.data_buckets[hash_value][index] = updated_value
 
+    # B3.4 Space complexity: O(n)
+    # The hash map corresponds to the size of the package list
+    # B3.4 Time Complexity: O(1) - O(n)
+    # No collisions is O(1), worst case scenario, with rehashes, it could reach O(n) before terminating.
     # This part adds packages to the hashtable. It provides a fix for collisions via the path under "else:", but
     # this shouldn't happen with this package set. It would be necessary if the hashfunction wasn't %number of packages.
     # Hashmap implementation help obtained from: ***REFERENCE***
@@ -48,6 +56,10 @@ class HashTable(object):
                 else:
                     self.data_buckets[next_bucket] = package_data
 
+    # B3.22 Space complexity: O(1)
+    # One variable is created regardless of package number.
+    # B3.22 Time Complexity: O(1)
+    # One calculation is performed regardless of package number.
     # This is a simple remainder method modulo hash function. %package number is the bucket that package will go into.
     # This is super simple because table size = # of packages, and there is one bucket for each.
     def hash_function(self, key_package_id, table_size):
@@ -57,6 +69,10 @@ class HashTable(object):
     def hash_again(self, previous_hash, size):
         return (previous_hash + 1) % size
 
+    # B3.21 Space complexity: O(1)
+    # This prints one line, regardless of number of packages in system.
+    # B3.21 Time Complexity: O(n)
+    # Worst case scenario, if the package is not present, it loops through the entire hashmap once.
     # This method obtains information already in the hashmap. It loops through the hashmap and finds the bucket that
     # isn't None (empty) and is found (the bucket == key).
     # else: gives an out of the loop. If you get back to start bucket, it means you've traversed the whole thing,

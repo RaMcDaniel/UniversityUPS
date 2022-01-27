@@ -23,6 +23,10 @@ class NearestNeighbor:
         else:
             self.truck_set = trucks.truck3_set
 
+    # B3.12 Space complexity: O(1)
+    # It holds one variable
+    # B3.12 Time Complexity: O(1)
+    # Accessing a hash map goes straight to value, no loops required
     # This retrieves addresses from the hashmap. It would be a straight forward match with the values in this class,
     # except for package #40. The modulo function would have put it in bucket 0.
     def get_address(self, package):
@@ -33,6 +37,10 @@ class NearestNeighbor:
             current_address = self.package_hashtable.data_buckets[package][0]
             return current_address
 
+    # B3.13 Space complexity: O(1)
+    # It holds one variable
+    # B3.13. Time Complexity: O(1)
+    # Accessing a dictionary requires no loops.
     # This retrieves distances between addresses specified from the dictionary and returns them.
     def get_distance_between_addresses(self, address1, address2):
         distance = self.city_map_matrix.distance_between_addresses[address1, address2]

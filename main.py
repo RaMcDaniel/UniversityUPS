@@ -8,6 +8,14 @@ from Time import *
 
 # C1: Rebecca McDaniel, Student ID: 001426057
 
+# B3 Total: Overall Time Complexity: O(n log n^2) - O(n^2)
+# Best case scenario, only a subset of the packages (within a specific truck), so through nested loops, which
+# O(n log n^2). Worst case scenario, if there is a single search for a package that is not present in the hashmap,
+# the entire hashmap list will be in a nested loop, which brings it to O(n^2).
+# Overall Space Complexity: O(n log n^3)
+# There is one function where 2 temporary dictionaries are created each loop, and a permanent one is created throughout.
+# These dictionaries only consist of a subset of N though (just 1 truck), no it's not as bad as O(n^3).
+
 # B3.1 Space complexity: O(1)
 # This interface part holds a constant five variables at all times.
 # B3.1 Time Complexity: 0(1)

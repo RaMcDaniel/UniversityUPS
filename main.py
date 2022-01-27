@@ -66,7 +66,7 @@ todays_addresses = Addresses()
 # B3.5 Space complexity: O(n)
 # It stores information once per address in list.
 # B#.5 Time Complexity: O(n)
-# It formats and adds an address once foe each address given.
+# It formats and adds an address once for each address given.
 # This part iterates over the distances csv and adds the first item of each row, the addresses, to the address_map.
 todays_addresses.put_addresses_in_city_map_matrix("WGUPS Distance File Cleaned.csv", city_map_matrix)
 

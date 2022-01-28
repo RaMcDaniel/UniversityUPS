@@ -51,7 +51,7 @@ number_packages = todays_packages.get_number_of_packages("WGUPS Package File.csv
 package_hashtable = HashTable(number_packages)
 
 # B3.3 Space complexity: O(n)
-# objects created corespond to number of packages
+# objects created correspond to number of packages
 # B3.3 Time Complexity: O(n)
 # It is usually O(1), but could get to O(n) if the .put() method referenced loops all the way through
 # This populates hashtable with rows from csv

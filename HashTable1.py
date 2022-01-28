@@ -77,7 +77,7 @@ class HashTable(object):
     # isn't None (empty) and is found (the bucket == key).
     # else: gives an out of the loop. If you get back to start bucket, it means you've traversed the whole thing,
     # so that package must not be in the system. This would happen for any package not 1-40.
-    # Hashmap implementation help obtained from: ***REFERENCE***
+    # Hashmap implementation help obtained from (James, 2016).
     def get(self, key):
         start_bucket = self.hash_function(key, len(self.key_buckets))
         data = None

@@ -29,7 +29,7 @@ print(f"{'Enter a time between 0800 and 1800 in HHMM format' : ^125}")
 
 # The next set of lines asks the user for the time they'd like to run the audit for.
 # combo_time adds additional information to create a complete datetime object using strptime.
-# datetime objects are necessary for timekeeping throughout.
+# datetime objects are necessary for timekeeping throughout. (James, 2019)
 # This program could be improved in the future by making the date changeable.
 report_time = (input(f"{'Time:' : ^80}"))
 today_date = "01-22-2022 "

@@ -1,6 +1,6 @@
 # This file contains the classes involved in creating an adjacency matrix.
 # The adjacency matrix holds all the addresses and their distances from one another.
-# for distance information. Modeled from ZyBooks ch. 6.6.
+# for distance information. Modeled from ZyBooks ch. 6.6 (Lysecky, n.d.)
 
 class AddressMatrix:
     def __init__(self):

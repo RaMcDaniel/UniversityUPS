@@ -2,7 +2,7 @@ import datetime
 
 
 # This class handles times. It updates statuses and delivery times of packages based on comparison with the times
-# given by the user and/or distances traveled by truck.
+# given by the user and/or distances traveled by truck. (WGU C950 course materials, n.d.)
 class Timing:
     def __init__(self, truck_route, city_map_matrix, truck_start_time, package_hashtable):
         self.package_hashtable = package_hashtable
@@ -11,14 +11,14 @@ class Timing:
         self.city_map_matrix = city_map_matrix
 
     # B3.19 Space complexity: O(1)
-    # A set number of variables are created rgardless of package number
+    # A set number of variables are created regardless of package number
     # B3.19 Time Complexity: O(1)
     # A calculation is performed on one object independent of package number.
     # Times are calculated based on distance. MPH is given by instructor.
     # MPH is converted to time in minutes.
     # Minutes modulo 60 leaves the minutes as a remainder.
     # Minutes - that modulo and then divided by 60 is the hours.
-    # A timedelta is created using the datetime library and those minutes and hours.
+    # A timedelta is created using the datetime library and those minutes and hours. (Hellman, 2011)
     # A timedelta is returned that can be added to the truck start time to get a time at each stop.
     def convert_distance_to_timedelta(self, distance):
         time_in_min = distance / 0.3  # 18 miles per hour= 0.3 miles/min

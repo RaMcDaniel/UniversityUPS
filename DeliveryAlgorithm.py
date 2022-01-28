@@ -65,8 +65,8 @@ class NearestNeighbor:
                             value = self.get_distance_between_addresses(self.start_node, package_address)
                             # This distance retrieved is cast as a float and put in temp_dict.
                             temp_dict[package] = float(value)
-                # This sorts the dictionary so the first item (the shortest next distance) can be easily chosen.
-                # Information about lambda function retrieved from: ******REFERENCES******
+                # This sorts the dictionary so the first item (the shortest next distance) can be easily chosen (AskPython, 2021).
+                # Information about lambda function retrieved from: (Pawnadeep, 2021)
                 sorted_temp_dict = dict(sorted(temp_dict.items(), key=lambda item: item[1]))
                 # The destination of the shortest next path is now your current position for the next loop.
                 # Dictionaries aren't iterable, so to get the 1st item you have to make a list of it.
@@ -107,7 +107,7 @@ class NearestNeighbor:
         hub_address_string = self.get_distance_between_addresses((self.get_address(current_package)), self.start_node)
         self.ordered_distance_dict["hub"] = float(hub_address_string)
         # This dictionary in order to sum the distance values. Total mileage can be calculated from this.
-        self.truck_mileage = sum(self.ordered_distance_dict.values())
+        self.truck_mileage = sum(self.ordered_distance_dict.values()) # (phihagphihag, n.d.)
         # The ordered_traversal_list is returned to main to be used in the timing class that handles time stamps.
         return self.ordered_traversal_list
 

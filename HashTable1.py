@@ -96,7 +96,7 @@ class HashTable(object):
                 if position == start_bucket:
                     data = "Package not in system"
                     break
-        # This prints the package information for the user. The formatting is for readability.
+        # This prints the package information for the user. The formatting is for readability. (GeeksforGeeks, 2020)
         # data[0][0:22] cuts long address short, and the .ljust methods pads each column for equal size.
         print(key, "\t", data[0][0:22].ljust(25), data[1][0:16].ljust(16), data[2], data[3], "\t", data[4][0:9].ljust(9)
               , "\t", data[5].ljust(8), data[7], "\t", data[8].ljust(35), "\t", data[9])

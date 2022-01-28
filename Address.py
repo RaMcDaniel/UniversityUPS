@@ -1,7 +1,7 @@
 import csv
 
 
-# The Address file stores address information and the functions that obtain it from the CSV.
+# The Address file stores address information and the functions that obtain it from the CSV. (Lusby, 2022)
 class Addresses:
     def __init__(self):
         # This list is useful in other methods
